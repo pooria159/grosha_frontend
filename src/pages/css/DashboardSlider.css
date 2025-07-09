@@ -2,21 +2,10 @@
     width: 8px;
 }
 
-
-html, body {
-  overflow-x: hidden;
-}
-
 .sidebar {
-  height: 100vh;
-  position: relative;
-  transition: all 0.3s;
-}
-
-/* .sidebar {
     scrollbar-width: thin;
     scrollbar-color: #4B5563 #1F2937;
-} */
+}
 
 .sidebar::-webkit-scrollbar-track {
     background: #1F2937;
