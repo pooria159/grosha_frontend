@@ -481,47 +481,47 @@ const FinancialDashboard: React.FC = () => {
                   <table className="w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
-                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">سفارش</th>
-                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مشتری</th>
-                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">محصولات</th>
-                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">تاریخ</th>
-                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مبلغ</th>
-                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">وضعیت</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-[80px]">سفارش</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-[120px]">مشتری</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-[180px] hidden sm:table-cell">محصولات</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-[100px]">تاریخ</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-[120px]">مبلغ</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider w-[100px]">وضعیت</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                       {filteredOrders.slice(0, 5).map((order) => (
                         <tr key={order.order_id} className="hover:bg-gray-50 transition-colors">
-                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap text-xs font-medium text-gray-900">#{order.order_id}</td>
-                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap">
-                            <div className="text-xs font-medium">{order.customer.username}</div>
-                            <div className="text-gray-400 text-xxs hidden md:block">{order.customer.email}</div>
+                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap text-xs font-medium text-gray-900 w-[80px] truncate">#{order.order_id}</td>
+                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap w-[120px]">
+                            <div className="text-xs font-medium truncate">{order.customer.username}</div>
+                            <div className="text-gray-400 text-xxs hidden md:block truncate">{order.customer.email}</div>
                           </td>
-                          <td className="px-2 py-1 md:px-4 md:py-2 hidden sm:table-cell">
+                          <td className="px-2 py-1 md:px-4 md:py-2 hidden sm:table-cell w-[180px]">
                             <div className="flex flex-col space-y-0.5">
                               {order.items.slice(0, 2).map((item, idx) => (
-                                <div key={idx} className="text-xs text-gray-700">
+                                <div key={idx} className="text-xs text-gray-700 truncate">
                                   {item.product_name} ({item.quantity}x)
-                                  <div className="text-xxs text-gray-500">{formatCurrency(item.price)}</div>
+                                  <div className="text-xxs text-gray-500 truncate">{formatCurrency(item.price)}</div>
                                 </div>
                               ))}
                               {order.items.length > 2 && (
-                                <div className="text-xxs text-indigo-600">+ {order.items.length - 2} محصول دیگر</div>
+                                <div className="text-xxs text-indigo-600 truncate">+ {order.items.length - 2} محصول دیگر</div>
                               )}
                             </div>
                           </td>
-                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap text-xs text-gray-500">
+                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap text-xs text-gray-500 w-[100px] truncate">
                             {formatDate(order.created_at)}
                           </td>
-                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap">
-                            <div className="text-xs font-medium">{formatCurrency(order.total_price)}</div>
+                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap w-[120px]">
+                            <div className="text-xs font-medium truncate">{formatCurrency(order.total_price)}</div>
                             {order.discount_percentage && (
-                              <div className="text-xxs text-green-600 hidden md:block">
+                              <div className="text-xxs text-green-600 hidden md:block truncate">
                                 {formatCurrency(order.original_price || order.total_price)} ({order.discount_percentage}% تخفیف)
                               </div>
                             )}
                           </td>
-                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap">
+                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap w-[100px]">
                             <StatusBadge status={order.status} />
                           </td>
                         </tr>
@@ -560,9 +560,9 @@ const StatusBadge: React.FC<{ status: string }> = ({ status }) => {
   const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.pending;
 
   return (
-    <span className={`px-1.5 py-0.5 rounded-full text-xxs md:text-xs flex items-center ${config.color}`}>
+    <span className={`px-1.5 py-0.5 rounded-full text-xxs md:text-xs flex items-center ${config.color} w-[80px] justify-center`}>
       {config.icon}
-      <span className="hidden sm:inline">{config.label}</span>
+      <span className="hidden sm:inline truncate">{config.label}</span>
     </span>
   );
 };
@@ -611,16 +611,18 @@ const SummaryCard = ({
       className={`${colorClasses[color as keyof typeof colorClasses].bg} p-3 rounded-lg shadow-sm border-t-4 ${colorClasses[color as keyof typeof colorClasses].border}`}
     >
       <div className="flex justify-between items-start">
-        <div>
-          <h4 className={`${colorClasses[color as keyof typeof colorClasses].text} font-medium text-xs`}>{title}</h4>
+        <div className="w-[calc(100%-40px)]">
+          <h4 className={`${colorClasses[color as keyof typeof colorClasses].text} font-medium text-xs truncate`}>{title}</h4>
           {loading ? (
             <div className="h-5 md:h-6 bg-gray-200 rounded mt-1 w-3/4 animate-pulse"></div>
           ) : (
-            <p className="text-sm md:text-lg font-bold text-gray-900 mt-1">{formattedValue}</p>
+            <p className="text-sm md:text-lg font-bold text-gray-900 mt-1 truncate">{formattedValue}</p>
           )}
-          <p className="text-xxs md:text-xs text-gray-500 mt-0.5">{change}</p>
+          <p className="text-xxs md:text-xs text-gray-500 mt-0.5 truncate">{change}</p>
         </div>
-        <div className={`${colorClasses[color as keyof typeof colorClasses].iconBg} p-1.5 md:p-2 rounded-md`}>{icon}</div>
+        <div className={`${colorClasses[color as keyof typeof colorClasses].iconBg} p-1.5 md:p-2 rounded-md flex-shrink-0`}>
+          {icon}
+        </div>
       </div>
     </motion.div>
   );
