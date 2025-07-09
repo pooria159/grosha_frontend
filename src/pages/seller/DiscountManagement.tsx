@@ -639,7 +639,7 @@ const DiscountManagement: React.FC = () => {
               placeholder="جستجوی تخفیف‌ها..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full p-2 md:p-3 pr-10 md:pr-12 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
+              className="w-full p-2 md:p-3 pr-10 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
             />
             <FiSearch className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>

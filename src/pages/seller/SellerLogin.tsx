@@ -137,7 +137,7 @@ const SellerLogin: React.FC = () => {
                                         name="phone"
                                         value={credentials.phone}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#2563eb] focus:border-transparent transition-all pr-12"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#2563eb] focus:border-transparent transition-all"
                                         placeholder="مثال: 09123456789"
                                         required
                                     />
