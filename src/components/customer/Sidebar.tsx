@@ -42,8 +42,8 @@ const Sidebar: React.FC = () => {
     { to: "/customer-dashboard/support", label: "پشتیبانی", icon: <FiHelpCircle className="w-5 h-5 flex-shrink-0" /> },
     { to: "/customer-dashboard/wishlist", label: "علاقه‌مندی‌ها", icon: <FiHeart className="w-5 h-5 flex-shrink-0" /> },
     { to: "/customer-dashboard/reviews", label: "نظرات", icon: <FiStar className="w-5 h-5 flex-shrink-0" /> },
-    { to: "/customer-dashboard/notifications", label: "اعلان‌ها", icon: <FiBell className="w-5 h-5 flex-shrink-0" /> },
-    { to: "/customer-dashboard/loyalty", label: "برنامه وفاداری", icon: <FiAward className="w-5 h-5 flex-shrink-0" /> },
+    // { to: "/customer-dashboard/notifications", label: "اعلان‌ها", icon: <FiBell className="w-5 h-5 flex-shrink-0" /> },
+    // { to: "/customer-dashboard/loyalty", label: "برنامه وفاداری", icon: <FiAward className="w-5 h-5 flex-shrink-0" /> },
   ];
 
   useEffect(() => {

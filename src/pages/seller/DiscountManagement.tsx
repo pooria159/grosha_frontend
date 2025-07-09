@@ -364,58 +364,58 @@ const DiscountManagement: React.FC = () => {
     <div className="relative">
       <input
         type="text"
-        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all cursor-pointer"
+        className="w-full p-2 md:p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all cursor-pointer"
         onClick={onClick}
         value={value}
         onChange={onChange}
         ref={ref}
         readOnly
       />
-      <FiCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+      <FiCalendar className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
     </div>
   ));
 
   return (
-    <div className="bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] min-h-screen p-4 md:p-8" style={{ direction: 'rtl' }}>
+    <div className="bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] min-h-screen p-2 md:p-8" style={{ direction: 'rtl' }}>
       <button 
         onClick={handleScrollToTop}
-        className="fixed bottom-6 left-6 bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] text-white p-3 rounded-full shadow-lg z-10 hover:shadow-xl transition-all duration-300 hover:scale-110"
+        className="fixed bottom-4 left-4 md:bottom-6 md:left-6 bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] text-white p-2 md:p-3 rounded-full shadow-lg z-10 hover:shadow-xl transition-all duration-300 hover:scale-110"
       >
-        <FiArrowUp size={20} />
+        <FiArrowUp size={16} className="md:size-5" />
       </button>
 
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8 text-center" ref={topRef}>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#1e293b] mb-3 relative inline-block">
-            <FiGift className="inline ml-2 text-[#3b82f6]" />
+        <div className="mb-4 md:mb-8 text-center" ref={topRef}>
+          <h1 className="text-xl md:text-3xl font-bold text-[#1e293b] mb-2 md:mb-3 relative inline-block">
+            <FiGift className="inline ml-1 md:ml-2 text-[#3b82f6]" />
             مدیریت تخفیف‌ها
           </h1>
-          <p className="text-[#64748b] max-w-2xl mx-auto">
+          <p className="text-[#64748b] text-sm md:text-base max-w-2xl mx-auto">
             مدیریت و سازماندهی تخفیف‌های فروشگاه شما با امکانات پیشرفته
           </p>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 overflow-hidden mb-8">
-          <div className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] p-4 text-white">
-            <h2 className="text-xl font-semibold flex items-center">
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-lg border border-white/50 overflow-hidden mb-4 md:mb-8">
+          <div className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] p-3 md:p-4 text-white">
+            <h2 className="text-base md:text-xl font-semibold flex items-center">
               {editDiscountId ? (
                 <>
-                  <FiEdit2 className="ml-2" />
+                  <FiEdit2 className="ml-1 md:ml-2" />
                   ویرایش تخفیف
                 </>
               ) : (
                 <>
-                  <FiPlus className="ml-2" />
+                  <FiPlus className="ml-1 md:ml-2" />
                   افزودن تخفیف جدید
                 </>
               )}
             </h2>
           </div>
           
-          <div className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div className="space-y-2">
-                <label className="block text-[#334155] font-medium">
+          <div className="p-3 md:p-6">
+            <div className="grid grid-cols-1 gap-3 md:gap-6 mb-4 md:mb-6">
+              <div className="space-y-1 md:space-y-2">
+                <label className="block text-[#334155] text-sm md:text-base font-medium">
                   عنوان تخفیف <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -424,17 +424,17 @@ const DiscountManagement: React.FC = () => {
                     placeholder="مثال: تخفیف تابستان"
                     value={newDiscount.title}
                     onChange={(e) => setNewDiscount({ ...newDiscount, title: e.target.value })}
-                    className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
+                    className="w-full p-2 md:p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
                     required
                   />
                   {newDiscount.title && (
-                    <FiCheck className="absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500" />
+                    <FiCheck className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2 text-green-500" />
                   )}
                 </div>
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-[#334155] font-medium">
+              <div className="space-y-1 md:space-y-2">
+                <label className="block text-[#334155] text-sm md:text-base font-medium">
                   کد تخفیف <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -443,54 +443,54 @@ const DiscountManagement: React.FC = () => {
                     placeholder="مثال: SUMMER"
                     value={newDiscount.code}
                     onChange={(e) => setNewDiscount({ ...newDiscount, code: e.target.value.toUpperCase() })}
-                    className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
+                    className="w-full p-2 md:p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
                     required
                   />
                   {newDiscount.code && (
-                    <FiCheck className="absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500" />
+                    <FiCheck className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2 text-green-500" />
                   )}
                 </div>
               </div>
               
-              <div className="space-y-2">
-                <label className="block text-[#334155] font-medium">وضعیت تخفیف</label>
+              <div className="space-y-1 md:space-y-2">
+                <label className="block text-[#334155] text-sm md:text-base font-medium">وضعیت تخفیف</label>
                 <div className="relative">
                   <select
                     value={newDiscount.is_active ? "true" : "false"}
                     onChange={(e) => setNewDiscount({ ...newDiscount, is_active: e.target.value === "true" })}
-                    className="w-full p-3.5 border bg-white border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all appearance-none"
+                    className="w-full p-2.5 md:p-3.5 border bg-white border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all appearance-none"
                   >
                     <option value="true">فعال</option>
                     <option value="false">غیر فعال</option>
                   </select>
-                  <div className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <div className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                    <svg className="w-3 h-3 md:w-4 md:h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="block text-[#334155] font-medium">اولین تخفیف</label>
+              <div className="space-y-1 md:space-y-2">
+                <label className="block text-[#334155] text-sm md:text-base font-medium">اولین تخفیف</label>
                 <div className="relative">
                   <select
                     value={newDiscount.for_first_purchase ? "true" : "false"}
                     onChange={(e) => setNewDiscount({ ...newDiscount, for_first_purchase: e.target.value === "true" })}
-                    className="w-full p-3.5 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all appearance-none"
+                    className="w-full p-2.5 md:p-3.5 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all appearance-none"
                   >
                     <option value="false">غیر فعال</option>
                     <option value="true">فعال</option>
                   </select>
-                  <div className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <div className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                    <svg className="w-3 h-3 md:w-4 md:h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
               </div>
-              <div className="space-y-2">
-                <label className="block text-[#334155] font-medium">
+              <div className="space-y-1 md:space-y-2">
+                <label className="block text-[#334155] text-sm md:text-base font-medium">
                   درصد تخفیف <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -504,15 +504,15 @@ const DiscountManagement: React.FC = () => {
                       const value = Math.max(1, Math.min(100, +e.target.value));
                       setNewDiscount({ ...newDiscount, percentage: value });
                     }}
-                    className="w-full p-3 pr-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
+                    className="w-full p-2 md:p-3 pr-2 md:pr-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
                     required
                   />
-                  <FiPercent className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <FiPercent className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="block text-[#334155] font-medium">
+              <div className="space-y-1 md:space-y-2">
+                <label className="block text-[#334155] text-sm md:text-base font-medium">
                   حداقل مبلغ سفارش
                 </label>
                 <div className="relative">
@@ -522,14 +522,14 @@ const DiscountManagement: React.FC = () => {
                     placeholder="100000"
                     value={newDiscount.min_order_amount}
                     onChange={(e) => setNewDiscount({ ...newDiscount, min_order_amount: +e.target.value })}
-                    className="w-full p-3 pr-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
+                    className="w-full p-2 md:p-3 pr-2 md:pr-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
                   />
-                  <FiDollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <FiDollarSign className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="block text-[#334155] font-medium">
+              <div className="space-y-1 md:space-y-2">
+                <label className="block text-[#334155] text-sm md:text-base font-medium">
                   تاریخ شروع اعتبار <span className="text-red-500">*</span>
                 </label>
                 <DatePicker
@@ -549,8 +549,8 @@ const DiscountManagement: React.FC = () => {
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="block text-[#334155] font-medium">
+              <div className="space-y-1 md:space-y-2">
+                <label className="block text-[#334155] text-sm md:text-base font-medium">
                   تاریخ پایان اعتبار <span className="text-red-500">*</span>
                 </label>
                 <DatePicker
@@ -571,25 +571,25 @@ const DiscountManagement: React.FC = () => {
                 />
               </div>
               
-              <div className="space-y-2 md:col-span-2">
-                <label className="block text-[#334155] font-medium">
+              <div className="space-y-1 md:space-y-2">
+                <label className="block text-[#334155] text-sm md:text-base font-medium">
                   توضیحات تخفیف <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   placeholder="توضیحات کامل درباره تخفیف..."
                   value={newDiscount.description}
                   onChange={(e) => setNewDiscount({ ...newDiscount, description: e.target.value })}
-                  className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all h-24"
+                  className="w-full p-2 md:p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all h-20 md:h-24"
                   required
                 />
               </div>
             </div>
             
-            <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
               <button
                 onClick={editDiscountId ? handleSaveEdit : handleAddDiscount}
                 disabled={!newDiscount.title || !newDiscount.code || !newDiscount.description || newDiscount.percentage <= 0}
-                className={`px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg flex-1 md:flex-none flex items-center justify-center ${
+                className={`px-4 py-2 md:px-8 md:py-3 rounded-lg transition-all duration-300 hover:shadow-lg flex-1 md:flex-none flex items-center justify-center ${
                     editDiscountId 
                         ? "bg-gradient-to-r from-[#10b981] to-[#059669] text-white hover:from-[#059669] hover:to-[#047857]"
                         : "bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] text-white hover:from-[#2563eb] hover:to-[#1e40af]"
@@ -603,12 +603,12 @@ const DiscountManagement: React.FC = () => {
                   "در حال پردازش..."
                 ) : editDiscountId ? (
                   <>
-                    <FiEdit2 className="ml-2" />
+                    <FiEdit2 className="ml-1 md:ml-2" />
                     ذخیره تغییرات
                   </>
                 ) : (
                   <>
-                    <FiPlus className="ml-2" />
+                    <FiPlus className="ml-1 md:ml-2" />
                     افزودن تخفیف
                   </>
                 )}
@@ -618,9 +618,9 @@ const DiscountManagement: React.FC = () => {
                 <button
                   onClick={handleCancelEdit}
                   disabled={loading}
-                  className="px-8 py-3 bg-gray-200 text-gray-700 rounded-lg transition-all duration-300 hover:shadow-lg hover:bg-gray-300 flex-1 md:flex-none flex items-center justify-center"
+                  className="px-4 py-2 md:px-8 md:py-3 bg-gray-200 text-gray-700 rounded-lg transition-all duration-300 hover:shadow-lg hover:bg-gray-300 flex-1 md:flex-none flex items-center justify-center"
                 >
-                  <FiX className="ml-2" />
+                  <FiX className="ml-1 md:ml-2" />
                   انصراف از ویرایش
                 </button>
               )}
@@ -628,43 +628,43 @@ const DiscountManagement: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-6 mb-8">
-          <h2 className="text-xl font-semibold text-[#1e293b] mb-4 flex items-center">
-            <FiSearch className="ml-2 text-[#3b82f6]" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-lg border border-white/50 p-3 md:p-6 mb-4 md:mb-8">
+          <h2 className="text-base md:text-xl font-semibold text-[#1e293b] mb-2 md:mb-4 flex items-center">
+            <FiSearch className="ml-1 md:ml-2 text-[#3b82f6]" />
             جستجوی تخفیف‌ها
           </h2>
           <div className="relative">
             <input
               type="text"
-              placeholder="جستجوی تخفیف‌ها بر اساس عنوان، کد، فروشنده یا توضیحات..."
+              placeholder="جستجوی تخفیف‌ها..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full p-3 pr-12 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
+              className="w-full p-2 md:p-3 pr-10 md:pr-12 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
             />
-            <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <FiSearch className="absolute left-2 md:left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 overflow-hidden">
-          <div className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] p-4 text-white">
-            <h2 className="text-xl font-semibold flex items-center">
-              <FiGift className="ml-2" />
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-lg border border-white/50 overflow-hidden">
+          <div className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] p-3 md:p-4 text-white">
+            <h2 className="text-base md:text-xl font-semibold flex items-center">
+              <FiGift className="ml-1 md:ml-2" />
               لیست تخفیف‌ها
-              <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-medium mr-3">
+              <span className="bg-white/20 px-2 py-0.5 md:px-3 md:py-1 rounded-full text-xs md:text-sm font-medium mr-2 md:mr-3">
                 {filteredDiscounts.length} تخفیف
               </span>
             </h2>
           </div>
           
-          <div className="p-6">
+          <div className="p-2 md:p-6">
             {apiError && (
-              <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+              <div className="bg-red-50 border-l-4 border-red-500 p-3 md:p-4 mb-4 md:mb-6">
                 <div className="flex">
                   <div className="flex-shrink-0">
-                    <FiAlertCircle className="h-5 w-5 text-red-500" />
+                    <FiAlertCircle className="h-4 w-4 md:h-5 md:w-5 text-red-500" />
                   </div>
-                  <div className="mr-3">
-                    <p className="text-sm text-red-700">{apiError}</p>
+                  <div className="mr-2 md:mr-3">
+                    <p className="text-xs md:text-sm text-red-700">{apiError}</p>
                   </div>
                 </div>
               </div>
@@ -677,46 +677,46 @@ const DiscountManagement: React.FC = () => {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">عنوان تخفیف</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">کد تخفیف</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">درصد</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">وضعیت</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">اولین خرید</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">حداقل سفارش</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">اعتبار</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">عملیات</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">عنوان</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">کد</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">درصد</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">وضعیت</th>
+                      <th className="hidden md:table-cell px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">اولین خرید</th>
+                      <th className="hidden md:table-cell px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">حداقل سفارش</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">اعتبار</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">عملیات</th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {filteredDiscounts.map((discount) => (
                       <tr key={discount.id} className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm font-medium text-gray-900">{discount.title}</div>
-                          <div className="text-sm text-gray-500 mt-1 line-clamp-2">{discount.description}</div>
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap">
+                          <div className="text-xs md:text-sm font-medium text-gray-900">{discount.title}</div>
+                          <div className="text-xs text-gray-500 mt-1 line-clamp-1 md:line-clamp-2">{discount.description}</div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap">
+                          <span className="px-1 py-0.5 md:px-2 md:py-1 inline-flex text-xs leading-4 md:leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
                             {discount.code}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500">
                           <div className="flex items-center">
-                            <FiPercent className="ml-1" />
+                            <FiPercent className="ml-0.5 md:ml-1" />
                             {discount.percentage}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap">
                           {discount.is_valid ? (
-                            <span className="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            <span className="px-1 py-0.5 md:px-2 md:py-1 inline-flex text-xs leading-4 md:leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                               فعال
                             </span>
                           ) : (
-                            <span className="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                            <span className="px-1 py-0.5 md:px-2 md:py-1 inline-flex text-xs leading-4 md:leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                               غیرفعال
                             </span>
                           )}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap">
                           {discount.for_first_purchase ? (
                             <span className="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
                               بله
@@ -727,25 +727,25 @@ const DiscountManagement: React.FC = () => {
                             </span>
                           )}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="hidden md:table-cell px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           <div className="flex items-center">
                             {discount.min_order_amount.toLocaleString('fa-IR')}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500">
                           <div className="flex items-center">
-                            <FiClock className="ml-1" />
+                            <FiClock className="ml-0.5 md:ml-1" />
                             {discount.remaining_time}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                          <div className="flex items-center space-x-2 space-x-reverse">
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium">
+                          <div className="flex items-center space-x-1 md:space-x-2 space-x-reverse">
                             <button
                               onClick={() => handleEditDiscount(discount.id)}
-                              className="text-blue-600 hover:text-blue-900 transition-colors p-2 rounded-full hover:bg-blue-50"
+                              className="text-blue-600 hover:text-blue-900 transition-colors p-1 md:p-2 rounded-full hover:bg-blue-50"
                               title="ویرایش"
                             >
-                              <FiEdit2 size={18} />
+                              <FiEdit2 size={14} className="md:size-[18px]" />
                             </button>
                             
                             <button
@@ -753,10 +753,10 @@ const DiscountManagement: React.FC = () => {
                                 setShowDeleteModal(true);
                                 setDiscountToDelete(discount.id);
                               }}
-                              className="text-red-600 hover:text-red-900 transition-colors p-2 rounded-full hover:bg-red-50"
+                              className="text-red-600 hover:text-red-900 transition-colors p-1 md:p-2 rounded-full hover:bg-red-50"
                               title="حذف"
                             >
-                              <FiTrash2 size={18} />
+                              <FiTrash2 size={14} className="md:size-[18px]" />
                             </button>
                           </div>
                         </td>
@@ -766,12 +766,12 @@ const DiscountManagement: React.FC = () => {
                 </table>
                 
                 {filteredDiscounts.length === 0 && !loading && (
-                  <div className="text-center py-12">
-                    <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                      <FiSearch size={32} className="text-gray-400" />
+                  <div className="text-center py-8 md:py-12">
+                    <div className="mx-auto w-16 h-16 md:w-24 md:h-24 bg-gray-100 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                      <FiSearch size={20} className="md:size-8 text-gray-400" />
                     </div>
-                    <h3 className="text-lg font-medium text-gray-900">تخفیفی یافت نشد</h3>
-                    <p className="text-gray-500 mt-1">
+                    <h3 className="text-sm md:text-lg font-medium text-gray-900">تخفیفی یافت نشد</h3>
+                    <p className="text-xs md:text-gray-500 mt-1">
                       {searchQuery ? "هیچ تخفیفی با معیارهای جستجوی شما مطابقت ندارد" : "هنوز هیچ تخفیفی ثبت نشده است"}
                     </p>
                   </div>
@@ -783,23 +783,23 @@ const DiscountManagement: React.FC = () => {
       </div>
 
       {showDeleteModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden w-full max-w-md">
-            <div className="bg-gradient-to-r from-[#ef4444] to-[#dc2626] p-4 text-white">
-              <h3 className="text-lg font-semibold flex items-center">
-                <FiTrash2 className="ml-2" />
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-2 md:p-4">
+          <div className="bg-white rounded-lg md:rounded-xl shadow-xl overflow-hidden w-full max-w-xs md:max-w-md">
+            <div className="bg-gradient-to-r from-[#ef4444] to-[#dc2626] p-3 md:p-4 text-white">
+              <h3 className="text-sm md:text-lg font-semibold flex items-center">
+                <FiTrash2 className="ml-1 md:ml-2" />
                 حذف تخفیف
               </h3>
             </div>
             
-            <div className="p-6">
-              <p className="text-gray-700 mb-6">آیا مطمئن هستید که می‌خواهید این تخفیف را حذف کنید؟ این عمل برگشت‌پذیر نیست.</p>
+            <div className="p-4 md:p-6">
+              <p className="text-xs md:text-sm text-gray-700 mb-4 md:mb-6">آیا مطمئن هستید که می‌خواهید این تخفیف را حذف کنید؟ این عمل برگشت‌پذیر نیست.</p>
               
-              <div className="flex justify-end space-x-3 space-x-reverse">
+              <div className="flex justify-end space-x-2 md:space-x-3 space-x-reverse">
                 <button
                   onClick={() => setShowDeleteModal(false)}
                   disabled={loading}
-                  className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50"
+                  className="px-3 py-1 md:px-4 md:py-2 border border-gray-300 rounded-lg text-xs md:text-sm text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50"
                 >
                   انصراف
                 </button>
@@ -810,7 +810,7 @@ const DiscountManagement: React.FC = () => {
                     }
                   }}
                   disabled={loading}
-                  className="px-4 py-2 bg-gradient-to-r from-[#ef4444] to-[#dc2626] text-white rounded-lg hover:shadow-md transition-all disabled:opacity-50"
+                  className="px-3 py-1 md:px-4 md:py-2 bg-gradient-to-r from-[#ef4444] to-[#dc2626] text-white rounded-lg hover:shadow-md transition-all disabled:opacity-50 text-xs md:text-sm"
                 >
                   {loading ? "در حال حذف..." : "حذف تخفیف"}
                 </button>
