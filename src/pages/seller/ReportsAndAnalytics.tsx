@@ -109,8 +109,18 @@ const ReportsAndAnalytics: React.FC = () => {
   const [totalUsers, setTotalUsers] = useState<number>(0);
   const [useMockData, setUseMockData] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<'monthly' | 'weekly'>('monthly');
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const token = localStorage.getItem("access_token");
   const refresh_token = localStorage.getItem("refresh_token");
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const refreshAccessToken = async () => {
     if (!refresh_token) {
@@ -274,14 +284,14 @@ const ReportsAndAnalytics: React.FC = () => {
   return (
     <div className="bg-gradient-to-b from-[#f8fafc] to-[#f1f5f9] min-h-screen p-4 md:p-6" style={{ direction: 'rtl' }}>
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8">
-            <div className="flex items-center justify-between">
+        <div className="mb-6 md:mb-8">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between">
               <div>
-                  <h1 className="text-2xl md:text-3xl font-bold text-gray-800 flex items-center">
-                  <FiTrendingUp className="ml-2 text-indigo-600" size={28} />
+                  <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 flex items-center">
+                  <FiTrendingUp className="ml-2 text-indigo-600" size={24} />
                   گزارشات و آنالیز فروش
                 </h1>
-                <p className="text-gray-600 mt-2">
+                <p className="text-gray-600 mt-1 md:mt-2 text-sm md:text-base">
                   تحلیل جامع عملکرد فروش و شناسایی فرصت‌های رشد کسب‌وکار
                 </p>
               </div>
@@ -294,21 +304,21 @@ const ReportsAndAnalytics: React.FC = () => {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              <div className="bg-white rounded-xl shadow-lg p-6 border-r-4 border-[#3b82f6] hover:shadow-md transition-shadow">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 border-r-4 border-[#3b82f6] hover:shadow-md transition-shadow">
                 <div className="flex justify-between items-start">
                   <div>
-                    <p className="text-[#64748b] text-sm">فروش کل</p>
-                    <h3 className="text-2xl font-bold text-[#1e293b] mt-1">
+                    <p className="text-[#64748b] text-xs md:text-sm">فروش کل</p>
+                    <h3 className="text-lg md:text-2xl font-bold text-[#1e293b] mt-1">
                       {new Intl.NumberFormat('fa-IR').format(totalSales)}
-                      <span className="text-sm font-normal text-[#64748b] mr-1">تومان</span>
+                      <span className="text-xs md:text-sm font-normal text-[#64748b] mr-1">تومان</span>
                     </h3>
                   </div>
-                  <div className="bg-[#3b82f6]/10 p-3 rounded-lg">
-                    <FiDollarSign className="text-[#3b82f6]" size={24} />
+                  <div className="bg-[#3b82f6]/10 p-2 md:p-3 rounded-lg">
+                    <FiDollarSign className="text-[#3b82f6]" size={isMobile ? 20 : 24} />
                   </div>
                 </div>
-                <div className="mt-4 flex items-center text-sm">
+                <div className="mt-2 md:mt-4 flex items-center text-xs md:text-sm">
                   <span className={`flex items-center ${growthRate >= 0 ? 'text-[#16a34a]' : 'text-[#dc2626]'}`}>
                     {growthRate >= 0 ? '↑' : '↓'} {Math.abs(growthRate).toFixed(1)}%
                   </span>
@@ -316,87 +326,87 @@ const ReportsAndAnalytics: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg p-6 border-r-4 border-[#10b981] hover:shadow-md transition-shadow">
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 border-r-4 border-[#10b981] hover:shadow-md transition-shadow">
                 <div className="flex justify-between items-start">
                   <div>
-                    <p className="text-[#64748b] text-sm">میانگین سفارش</p>
-                    <h3 className="text-2xl font-bold text-[#1e293b] mt-1">
+                    <p className="text-[#64748b] text-xs md:text-sm">میانگین سفارش</p>
+                    <h3 className="text-lg md:text-2xl font-bold text-[#1e293b] mt-1">
                       {new Intl.NumberFormat('fa-IR').format(avgOrderValue)}
-                      <span className="text-sm font-normal text-[#64748b] mr-1">تومان</span>
+                      <span className="text-xs md:text-sm font-normal text-[#64748b] mr-1">تومان</span>
                     </h3>
                   </div>
-                  <div className="bg-[#10b981]/10 p-3 rounded-lg">
-                    <FiPieChart className="text-[#10b981]" size={24} />
+                  <div className="bg-[#10b981]/10 p-2 md:p-3 rounded-lg">
+                    <FiPieChart className="text-[#10b981]" size={isMobile ? 20 : 24} />
                   </div>
                 </div>
-                <div className="mt-4 text-sm text-[#64748b]">
+                <div className="mt-2 md:mt-4 text-xs md:text-sm text-[#64748b]">
                   <span>از {completedOrders.length} سفارش تکمیل شده</span>
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg p-6 border-r-4 border-[#f59e0b] hover:shadow-md transition-shadow">
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 border-r-4 border-[#f59e0b] hover:shadow-md transition-shadow">
                 <div className="flex justify-between items-start">
                   <div>
-                    <p className="text-[#64748b] text-sm">مشتریان منحصر به فرد</p>
-                    <h3 className="text-2xl font-bold text-[#1e293b] mt-1">
+                    <p className="text-[#64748b] text-xs md:text-sm">مشتریان منحصر به فرد</p>
+                    <h3 className="text-lg md:text-2xl font-bold text-[#1e293b] mt-1">
                       {new Intl.NumberFormat('fa-IR').format(totalUsers)}
-                      <span className="text-sm font-normal text-[#64748b] mr-1">نفر</span>
+                      <span className="text-xs md:text-sm font-normal text-[#64748b] mr-1">نفر</span>
                     </h3>
                   </div>
-                  <div className="bg-[#f59e0b]/10 p-3 rounded-lg">
-                    <FiUsers className="text-[#f59e0b]" size={24} />
+                  <div className="bg-[#f59e0b]/10 p-2 md:p-3 rounded-lg">
+                    <FiUsers className="text-[#f59e0b]" size={isMobile ? 20 : 24} />
                   </div>
                 </div>
-                <div className="mt-4 text-sm text-[#64748b]">
+                <div className="mt-2 md:mt-4 text-xs md:text-sm text-[#64748b]">
                   <span>تعداد کاربران فعال</span>
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg p-6 border-r-4 border-[#8b5cf6] hover:shadow-md transition-shadow">
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 border-r-4 border-[#8b5cf6] hover:shadow-md transition-shadow">
                 <div className="flex justify-between items-start">
                   <div>
-                    <p className="text-[#64748b] text-sm">محصولات پرفروش</p>
-                    <h3 className="text-2xl font-bold text-[#1e293b] mt-1">
+                    <p className="text-[#64748b] text-xs md:text-sm">محصولات پرفروش</p>
+                    <h3 className="text-lg md:text-2xl font-bold text-[#1e293b] mt-1">
                       {new Intl.NumberFormat('fa-IR').format(getTopProducts().length)}
-                      <span className="text-sm font-normal text-[#64748b] mr-1">محصول</span>
+                      <span className="text-xs md:text-sm font-normal text-[#64748b] mr-1">محصول</span>
                     </h3>
                   </div>
-                  <div className="bg-[#8b5cf6]/10 p-3 rounded-lg">
-                    <FiAward className="text-[#8b5cf6]" size={24} />
+                  <div className="bg-[#8b5cf6]/10 p-2 md:p-3 rounded-lg">
+                    <FiAward className="text-[#8b5cf6]" size={isMobile ? 20 : 24} />
                   </div>
                 </div>
-                <div className="mt-4 text-sm text-[#64748b]">
+                <div className="mt-2 md:mt-4 text-xs md:text-sm text-[#64748b]">
                   <span>براساس فروش {completedOrders.length} سفارش</span>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-              <div className="lg:col-span-2 bg-white rounded-xl shadow-lg p-6 border-t-4 border-[#3b82f6] hover:shadow-md transition-shadow">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-bold text-[#1e293b] flex items-center">
-                    <FiCalendar className="ml-2 text-[#3b82f6]" size={24} />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+              <div className="lg:col-span-2 bg-white rounded-xl shadow-lg p-4 md:p-6 border-t-4 border-[#3b82f6] hover:shadow-md transition-shadow">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 md:mb-6">
+                  <h2 className="text-lg md:text-xl font-bold text-[#1e293b] flex items-center">
+                    <FiCalendar className="ml-2 text-[#3b82f6]" size={isMobile ? 18 : 24} />
                     نمودار فروش ماهانه
                   </h2>
-                  <div className="flex space-x-2 space-x-reverse">
+                  <div className="flex space-x-2 space-x-reverse mt-2 md:mt-0">
                     <button 
                       onClick={() => setActiveTab('monthly')}
-                      className={`px-3 py-1 text-sm rounded-lg ${activeTab === 'monthly' ? 'bg-[#3b82f6] text-white' : 'bg-gray-100 text-gray-600'}`}
+                      className={`px-2 py-1 text-xs md:px-3 md:py-1 md:text-sm rounded-lg ${activeTab === 'monthly' ? 'bg-[#3b82f6] text-white' : 'bg-gray-100 text-gray-600'}`}
                     >
                       ماهانه
                     </button>
                   </div>
                 </div>
-                <div className="h-80">
+                <div className="h-64 md:h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart 
                       data={monthlySalesData}
-                      margin={{ top: 20, right: 30, left: 40, bottom: 20 }}
-                      barSize={80}
+                      margin={{ top: 20, right: 10, left: 0, bottom: 20 }}
+                      barSize={isMobile ? 30 : 80}
                     >
                       <XAxis 
                         dataKey="name" 
-                        tick={{ fontSize: 12 }}
+                        tick={{ fontSize: isMobile ? 10 : 12 }}
                         interval={0}
                         axisLine={{ stroke: '#e2e8f0' }}
                         tickLine={{ stroke: '#e2e8f0' }}
@@ -405,15 +415,15 @@ const ReportsAndAnalytics: React.FC = () => {
                         tick={<CustomYAxisTick />}
                         axisLine={{ stroke: '#e2e8f0' }}
                         tickLine={{ stroke: '#e2e8f0' }}
-                        width={60}
+                        width={isMobile ? 40 : 60}
                       />
                       <Tooltip 
                         content={<CustomTooltip />}
                         cursor={{ fill: '#f1f5f9' }}
                       />
                       <Legend 
-                        wrapperStyle={{ paddingTop: 20 }}
-                        formatter={(value) => <span className="text-sm text-gray-600">{value}</span>}
+                        wrapperStyle={{ paddingTop: 10 }}
+                        formatter={(value) => <span className="text-xs md:text-sm text-gray-600">{value}</span>}
                       />
                       <Bar 
                         dataKey="فروش" 
@@ -427,12 +437,12 @@ const ReportsAndAnalytics: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-[#8b5cf6] hover:shadow-md transition-shadow">
-                <h2 className="text-xl font-bold text-[#1e293b] flex items-center mb-6">
-                  <FiAward className="ml-2 text-[#8b5cf6]" size={24} />
+              <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 border-t-4 border-[#8b5cf6] hover:shadow-md transition-shadow">
+                <h2 className="text-lg md:text-xl font-bold text-[#1e293b] flex items-center mb-4 md:mb-6">
+                  <FiAward className="ml-2 text-[#8b5cf6]" size={isMobile ? 18 : 24} />
                   محصولات پرفروش
                 </h2>
-                <div className="h-80">
+                <div className="h-64 md:h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
@@ -441,8 +451,8 @@ const ReportsAndAnalytics: React.FC = () => {
                         nameKey="name"
                         cx="50%"
                         cy="50%"
-                        outerRadius={100}
-                        innerRadius={60}
+                        outerRadius={isMobile ? 70 : 100}
+                        innerRadius={isMobile ? 40 : 60}
                         paddingAngle={2}
                         label={renderCustomizedLabel}
                         labelLine={false}
@@ -458,12 +468,13 @@ const ReportsAndAnalytics: React.FC = () => {
                         content={<CustomTooltip />}
                       />
                       <Legend 
-                        layout="vertical" 
-                        verticalAlign="middle" 
-                        align="left"
+                        layout={isMobile ? "horizontal" : "vertical"} 
+                        verticalAlign={isMobile ? "bottom" : "middle"} 
+                        align={isMobile ? "center" : "left"}
                         wrapperStyle={{ 
-                          paddingLeft: 20,
-                          fontSize: '0.75rem'
+                          paddingLeft: isMobile ? 0 : 20,
+                          fontSize: isMobile ? '0.65rem' : '0.75rem',
+                          paddingTop: isMobile ? 10 : 0
                         }}
                         formatter={(value, entry, index) => (
                           <span className="text-gray-600">
@@ -477,33 +488,37 @@ const ReportsAndAnalytics: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-[#10b981] hover:shadow-md transition-shadow">
-              <h2 className="text-xl font-bold text-[#1e293b] flex items-center mb-6">
-                <FiTrendingUp className="ml-2 text-[#10b981]" size={24} />
+            <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 border-t-4 border-[#10b981] hover:shadow-md transition-shadow">
+              <h2 className="text-lg md:text-xl font-bold text-[#1e293b] flex items-center mb-4 md:mb-6">
+                <FiTrendingUp className="ml-2 text-[#10b981]" size={isMobile ? 18 : 24} />
                 جزئیات سفارشات
               </h2>
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">شماره سفارش</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مشتری</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">تاریخ</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مبلغ نهایی</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">وضعیت</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">سفارش</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مشتری</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">تاریخ</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مبلغ</th>
+                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">وضعیت</th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {orders.slice(0, 5).map((order) => (
                       <tr key={order.order_id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{order.order_id}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.customer.username}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(order.created_at)}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-900">{order.order_id}</td>
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500 truncate max-w-[80px] md:max-w-none">
+                          {order.customer.username}
+                        </td>
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500">
+                          {formatDate(order.created_at)}
+                        </td>
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500">
                           {new Intl.NumberFormat('fa-IR').format(order.total_price)} تومان
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <span className={`px-3 py-1 text-xs rounded-full ${
+                        <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap">
+                          <span className={`px-2 py-1 text-xs rounded-full ${
                             order.status === 'completed' ? 'bg-green-100 text-green-800' :
                             order.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
                             'bg-red-100 text-red-800'

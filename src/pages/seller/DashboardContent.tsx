@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
-  PieChart, Pie, Cell, AreaChart, Area, LineChart, Line
+  PieChart, Pie, Cell, AreaChart, Area
 } from "recharts";
 import { 
   FiTrendingUp,
-  FiAward, FiUsers, FiShoppingBag, FiActivity, FiBarChart2
+  FiAward, FiUsers, FiShoppingBag, FiActivity
 } from "react-icons/fi";
 import { BsBoxSeam, BsGraphUpArrow } from "react-icons/bs";
 import { MdOutlineAttachMoney, MdOutlineInventory } from "react-icons/md";
@@ -69,30 +69,21 @@ const topProductsData = [
   { name: "سایر", فروش: 1250, سهم: 18 },
 ];
 
-const trafficSources = [
-  { name: "مستقیم", value: 35 },
-  { name: "جستجو", value: 25 },
-  { name: "شبکه‌های اجتماعی", value: 20 },
-  { name: "تبلیغات", value: 15 },
-  { name: "سایر", value: 5 },
-];
-
 const COLORS = ["#6366F1", "#10B981", "#F59E0B", "#EC4899", "#8B5CF6", "#3B82F6"];
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white p-4 rounded-lg shadow-xl border border-gray-200">
+      <div className="bg-white p-3 md:p-4 rounded-lg shadow-xl border border-gray-200 text-sm md:text-base">
         <p className="font-bold text-gray-800">{label}</p>
         {payload.map((item: any, index: number) => (
-          <p key={index} className="flex items-center text-sm mt-1">
+          <p key={index} className="flex items-center mt-1">
             <span 
-              className="w-3 h-3 rounded-full mr-2" 
+              className="w-2 h-2 md:w-3 md:h-3 rounded-full mr-2" 
               style={{ backgroundColor: item.color }}
             ></span>
             {item.name}: <span className="font-bold mr-1">
               {new Intl.NumberFormat('fa-IR').format(item.value)}{item.dataKey === 'فروش' ? ' تومان' : ''}
-              {item.dataKey === 'value' ? '%' : ''}
             </span>
           </p>
         ))}
@@ -111,7 +102,8 @@ const CustomYAxisTick = ({ x, y, payload }: any) => {
         dy={4} 
         textAnchor="end" 
         fill="#666"
-        fontSize={12}
+        fontSize={10}
+        className="hidden sm:block"
       >
         {new Intl.NumberFormat('fa-IR').format(payload.value)}
       </text>
@@ -251,7 +243,7 @@ const ProfessionalDashboard: React.FC = () => {
         fill="white"
         textAnchor="middle"
         dominantBaseline="central"
-        className="text-xs font-bold"
+        className="text-[10px] md:text-xs font-bold"
       >
         {`${(percent * 100).toFixed(0)}%`}
       </text>
@@ -259,63 +251,63 @@ const ProfessionalDashboard: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen p-4 md:p-6" style={{ direction: 'rtl' }}>
+    <div className="bg-gray-50 min-h-screen p-3 md:p-6" style={{ direction: 'rtl' }}>
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 md:mb-8">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">داشبورد مدیریتی</h1>
-            <p className="text-gray-500 mt-2">خلاصه عملکرد و آمار کلی کسب‌وکار</p>
+            <h1 className="text-xl md:text-3xl font-bold text-gray-800">داشبورد مدیریتی</h1>
+            <p className="text-gray-500 mt-1 text-sm md:text-base">خلاصه عملکرد و آمار کلی کسب‌وکار</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-6 md:mb-8">
+          <div className="bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-sm border border-gray-100">
             <div className="flex justify-between">
               <div>
-                <p className="text-gray-500 text-sm">فروش کل</p>
-                <h3 className="text-2xl font-bold text-gray-800 mt-1">
+                <p className="text-gray-500 text-xs md:text-sm">فروش کل</p>
+                <h3 className="text-lg md:text-2xl font-bold text-gray-800 mt-1">
                   {new Intl.NumberFormat('fa-IR').format(totalSales)}
-                  <span className="text-sm font-normal text-gray-500 mr-1">تومان</span>
+                  <span className="text-xs md:text-sm font-normal text-gray-500 mr-1">تومان</span>
                 </h3>
               </div>
-              <div className="bg-indigo-100 p-3 rounded-lg">
-                <MdOutlineAttachMoney className="text-indigo-600" size={24} />
+              <div className="bg-indigo-100 p-2 md:p-3 rounded-lg">
+                <MdOutlineAttachMoney className="text-indigo-600" size={20} />
               </div>
             </div>
-            <div className="mt-4 flex items-center">
-              <span className={`text-sm flex items-center ${growthRate >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+            <div className="mt-3 md:mt-4 flex items-center">
+              <span className={`text-xs md:text-sm flex items-center ${growthRate >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                 {growthRate >= 0 ? (
-                  <FiTrendingUp className="ml-1" />
+                  <FiTrendingUp className="ml-1" size={14} />
                 ) : (
-                  <FiTrendingUp className="ml-1 transform rotate-180" />
+                  <FiTrendingUp className="ml-1 transform rotate-180" size={14} />
                 )}
                 {new Intl.NumberFormat('fa-IR').format(Math.abs(growthRate))}%
               </span>
-              <span className="text-gray-500 text-sm mr-1">نسبت به ماه قبل</span>
+              <span className="text-gray-500 text-xs md:text-sm mr-1">نسبت به ماه قبل</span>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <div className="bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-sm border border-gray-100">
             <div className="flex justify-between">
               <div>
-                <p className="text-gray-500 text-sm">مشتریان</p>
-                <h3 className="text-2xl font-bold text-gray-800 mt-1">
+                <p className="text-gray-500 text-xs md:text-sm">مشتریان</p>
+                <h3 className="text-lg md:text-2xl font-bold text-gray-800 mt-1">
                   {new Intl.NumberFormat('fa-IR').format(totalUniqueCustomers)}
-                  <span className="text-sm font-normal text-gray-500 mr-1">نفر</span>
+                  <span className="text-xs md:text-sm font-normal text-gray-500 mr-1">نفر</span>
                 </h3>
               </div>
-              <div className="bg-green-100 p-3 rounded-lg">
-                <FiUsers className="text-green-600" size={24} />
+              <div className="bg-green-100 p-2 md:p-3 rounded-lg">
+                <FiUsers className="text-green-600" size={20} />
               </div>
             </div>
-            <div className="mt-4">
+            <div className="mt-3 md:mt-4">
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div 
                   className="h-2 rounded-full bg-green-500" 
                   style={{ width: `${Math.min((totalUniqueCustomers / 200) * 100, 100)}%` }}
                 ></div>
               </div>
-              <p className="text-gray-500 text-sm mt-1">
+              <p className="text-gray-500 text-xs md:text-sm mt-1">
                 {new Intl.NumberFormat('fa-IR').format(
                   Math.min((totalUniqueCustomers / 200) * 100, 100)
                 )}% از هدف ماهانه
@@ -323,21 +315,21 @@ const ProfessionalDashboard: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <div className="bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-sm border border-gray-100">
             <div className="flex justify-between">
               <div>
-                <p className="text-gray-500 text-sm">سفارشات</p>
-                <h3 className="text-2xl font-bold text-gray-800 mt-1">
+                <p className="text-gray-500 text-xs md:text-sm">سفارشات</p>
+                <h3 className="text-lg md:text-2xl font-bold text-gray-800 mt-1">
                   {new Intl.NumberFormat('fa-IR').format(orders.length)}
-                  <span className="text-sm font-normal text-gray-500 mr-1">سفارش</span>
+                  <span className="text-xs md:text-sm font-normal text-gray-500 mr-1">سفارش</span>
                 </h3>
               </div>
-              <div className="bg-blue-100 p-3 rounded-lg">
-                <FiShoppingBag className="text-blue-600" size={24} />
+              <div className="bg-blue-100 p-2 md:p-3 rounded-lg">
+                <FiShoppingBag className="text-blue-600" size={20} />
               </div>
             </div>
-            <div className="mt-4">
-              <ResponsiveContainer width="100%" height={50}>
+            <div className="mt-3 md:mt-4">
+              <ResponsiveContainer width="100%" height={40}>
                 <AreaChart data={monthlySalesData}>
                   <Area 
                     type="monotone" 
@@ -351,23 +343,23 @@ const ProfessionalDashboard: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <div className="bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-sm border border-gray-100">
             <div className="flex justify-between">
               <div>
-                <p className="text-gray-500 text-sm">موجودی انبار</p>
-                <h3 className="text-2xl font-bold text-gray-800 mt-1">
+                <p className="text-gray-500 text-xs md:text-sm">موجودی انبار</p>
+                <h3 className="text-lg md:text-2xl font-bold text-gray-800 mt-1">
                   {new Intl.NumberFormat('fa-IR').format(totalStock)}
-                  <span className="text-sm font-normal text-gray-500 mr-1">محصول</span>
+                  <span className="text-xs md:text-sm font-normal text-gray-500 mr-1">محصول</span>
                 </h3>
               </div>
-              <div className="bg-purple-100 p-3 rounded-lg">
-                <MdOutlineInventory className="text-purple-600" size={24} />
+              <div className="bg-purple-100 p-2 md:p-3 rounded-lg">
+                <MdOutlineInventory className="text-purple-600" size={20} />
               </div>
             </div>
-            <div className="mt-4">
-              <div className="flex items-center text-sm">
+            <div className="mt-3 md:mt-4">
+              <div className="flex items-center text-xs md:text-sm">
                 <span className="text-green-600 flex items-center">
-                  <BsGraphUpArrow className="ml-1" />
+                  <BsGraphUpArrow className="ml-1" size={14} />
                   {products.length} محصول
                 </span>
                 <span className="text-gray-500 mr-2">در انبار شما</span>
@@ -376,27 +368,27 @@ const ProfessionalDashboard: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-          <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
-              <h2 className="text-lg font-bold text-gray-800 flex items-center">
-                <FiActivity className="ml-2 text-indigo-600" size={20} />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 mb-4 md:mb-6">
+          <div className="lg:col-span-2 bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-sm border border-gray-100">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 md:mb-6">
+              <h2 className="text-base md:text-lg font-bold text-gray-800 flex items-center">
+                <FiActivity className="ml-2 text-indigo-600" size={16} />
                 عملکرد فروش ماهانه
               </h2>
-              <div className="mt-3 sm:mt-0 flex space-x-2 space-x-reverse">
-                <button className="px-3 py-1 text-sm bg-indigo-600 text-white rounded-lg">۶ ماهه</button>
+              <div className="mt-2 sm:mt-0 flex space-x-2 space-x-reverse">
+                <button className="px-2 py-1 text-xs md:text-sm bg-indigo-600 text-white rounded-lg">۶ ماهه</button>
               </div>
             </div>
-            <div className="h-80">
+            <div className="h-64 md:h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart 
                   data={monthlySalesData}
-                  margin={{ top: 20, right: 30, left: 40, bottom: 5 }}
-                  barSize={80}
+                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                  barSize={40}
                 >
                   <XAxis 
                     dataKey="name" 
-                    tick={{ fontSize: 12 }}
+                    tick={{ fontSize: 10 }}
                     axisLine={{ stroke: '#e2e8f0' }}
                     tickLine={{ stroke: '#e2e8f0' }}
                   />
@@ -404,15 +396,15 @@ const ProfessionalDashboard: React.FC = () => {
                     tick={<CustomYAxisTick />}
                     axisLine={{ stroke: '#e2e8f0' }}
                     tickLine={{ stroke: '#e2e8f0' }}
-                    width={60}
+                    width={40}
                   />
                   <Tooltip 
                     content={<CustomTooltip />}
                     cursor={{ fill: '#f1f5f9' }}
                   />
                   <Legend 
-                    wrapperStyle={{ paddingTop: 20 }}
-                    formatter={(value) => <span className="text-sm text-gray-600">{value}</span>}
+                    wrapperStyle={{ paddingTop: 10 }}
+                    formatter={(value) => <span className="text-xs md:text-sm text-gray-600">{value}</span>}
                   />
                   <Bar 
                     dataKey="فروش" 
@@ -426,12 +418,12 @@ const ProfessionalDashboard: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h2 className="text-lg font-bold text-gray-800 flex items-center mb-6">
-              <FiAward className="ml-2 text-purple-600" size={20} />
+          <div className="bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-sm border border-gray-100">
+            <h2 className="text-base md:text-lg font-bold text-gray-800 flex items-center mb-4 md:mb-6">
+              <FiAward className="ml-2 text-purple-600" size={16} />
               محصولات پرفروش
             </h2>
-            <div className="h-80">
+            <div className="h-64 md:h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
@@ -440,8 +432,8 @@ const ProfessionalDashboard: React.FC = () => {
                     nameKey="name"
                     cx="50%"
                     cy="50%"
-                    outerRadius={90}
-                    innerRadius={50}
+                    outerRadius={70}
+                    innerRadius={40}
                     paddingAngle={2}
                     label={renderCustomizedLabel}
                     labelLine={false}
@@ -458,8 +450,8 @@ const ProfessionalDashboard: React.FC = () => {
                     verticalAlign="middle" 
                     align="left"
                     wrapperStyle={{ 
-                      paddingLeft: 20,
-                      fontSize: '0.75rem'
+                      paddingLeft: 10,
+                      fontSize: '0.7rem'
                     }}
                     formatter={(value, entry, index) => (
                       <span className="text-gray-600">
@@ -473,35 +465,35 @@ const ProfessionalDashboard: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-6">
-          <h2 className="text-lg font-bold text-gray-800 flex items-center mb-6">
-            <BsBoxSeam className="ml-2 text-orange-500" size={20} />
+        <div className="bg-white p-4 md:p-6 rounded-lg md:rounded-xl shadow-sm border border-gray-100 mb-6">
+          <h2 className="text-base md:text-lg font-bold text-gray-800 flex items-center mb-4 md:mb-6">
+            <BsBoxSeam className="ml-2 text-orange-500" size={16} />
             سفارشات اخیر
           </h2>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">شماره سفارش</th>
-                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مشتری</th>
-                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">تاریخ</th>
-                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مبلغ</th>
-                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">وضعیت</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">شماره سفارش</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مشتری</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">تاریخ</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مبلغ</th>
+                  <th className="px-3 py-2 md:px-6 md:py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">وضعیت</th>
                 </tr>
               </thead>  
               <tbody className="bg-white divide-y divide-gray-200">
                 {filteredOrders.slice(0, 5).map((order) => (
                   <tr key={order.order_id} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-900">
                       {new Intl.NumberFormat('fa-IR').format(order.order_id)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.customer.username}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(order.created_at)}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500">{order.customer.username}</td>
+                    <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500">{formatDate(order.created_at)}</td>
+                    <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500">
                       {new Intl.NumberFormat('fa-IR').format(order.total_price)} تومان
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`px-2 py-1 text-xs rounded-full ${
+                    <td className="px-3 py-2 md:px-6 md:py-4 whitespace-nowrap">
+                      <span className={`px-2 py-1 text-[10px] md:text-xs rounded-full ${
                         order.status === "completed" ? "bg-green-100 text-green-800" :
                         order.status === "pending" ? "bg-yellow-100 text-yellow-800" :
                         order.status === "cancelled" ? "bg-red-100 text-red-800" :
@@ -517,9 +509,9 @@ const ProfessionalDashboard: React.FC = () => {
               </tbody>
             </table>
           </div>
-          <div className="mt-4 flex justify-end">
+          <div className="mt-3 md:mt-4 flex justify-end">
             <button 
-              className="text-indigo-600 hover:text-indigo-800 text-sm font-medium" 
+              className="text-indigo-600 hover:text-indigo-800 text-xs md:text-sm font-medium" 
               onClick={handlenav}
             >
               مشاهده همه سفارشات →
