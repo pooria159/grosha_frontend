@@ -86,7 +86,7 @@ const TeamManagement: React.FC = () => {
 
         const headers = { Authorization: `Bearer ${token}` };
 
-        const storeRes = await axios.get("http://localhost:8000/api/stores/", { headers });
+        const storeRes = await axios.get("https://api.grosha.ir/api/stores/", { headers });
         setStore(storeRes.data);
 
         if (storeRes.data) {
@@ -94,7 +94,7 @@ const TeamManagement: React.FC = () => {
         }
 
         const usersRes = await axios.get(
-          `http://localhost:8000/api/users/search/?store_id=${storeRes.data?.id || ""}`,
+          `https://api.grosha.ir/api/users/search/?store_id=${storeRes.data?.id || ""}`,
           { headers }
         );
         setUsers(usersRes.data);
@@ -111,7 +111,7 @@ const TeamManagement: React.FC = () => {
 
   const fetchStoreRoles = async (storeId: number, headers: any) => {
     const rolesRes = await axios.get(
-      `http://localhost:8000/api/store-roles/`,
+      `https://api.grosha.ir/api/store-roles/`,
       { headers }
     );
     setStoreRoles(rolesRes.data);
@@ -131,7 +131,7 @@ const TeamManagement: React.FC = () => {
       };
 
       const response = await axios.post(
-        `http://localhost:8000/api/store-roles/create/`,
+        `https://api.grosha.ir/api/store-roles/create/`,
         {
           user: newRole.user,
           role: newRole.role,
@@ -143,7 +143,7 @@ const TeamManagement: React.FC = () => {
       toast.success("نقش با موفقیت اضافه شد");
 
       const usersRes = await axios.get(
-        `http://localhost:8000/api/users/search/?store_id=${store.id}`,
+        `https://api.grosha.ir/api/users/search/?store_id=${store.id}`,
         { headers }
       );
       setUsers(usersRes.data);
@@ -160,7 +160,7 @@ const TeamManagement: React.FC = () => {
 
     try {
       const token = localStorage.getItem("access_token");
-      await axios.delete(`http://localhost:8000/api/store-roles/${id}/delete/`, {
+      await axios.delete(`https://api.grosha.ir/api/store-roles/${id}/delete/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -168,7 +168,7 @@ const TeamManagement: React.FC = () => {
       toast.success("نقش با موفقیت حذف شد");
 
       const usersRes = await axios.get(
-        `http://localhost:8000/api/users/search/?store_id=${store?.id || ""}`,
+        `https://api.grosha.ir/api/users/search/?store_id=${store?.id || ""}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setUsers(usersRes.data);
@@ -184,7 +184,7 @@ const TeamManagement: React.FC = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       await axios.patch(
-        `http://localhost:8000/api/store-roles/${id}/toggle-active/`,
+        `https://api.grosha.ir/api/store-roles/${id}/toggle-active/`,
         {},
         { headers }
       );

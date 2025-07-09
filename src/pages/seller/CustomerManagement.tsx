@@ -55,7 +55,7 @@ const CustomerManagement: React.FC = () => {
           throw new Error("No access token found");
         }
 
-        const response = await fetch("http://localhost:8000/api/orders/by-seller/", {
+        const response = await fetch("https://api.grosha.ir/api/orders/by-seller/", {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",

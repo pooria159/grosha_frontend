@@ -172,7 +172,7 @@ const ProfessionalDashboard: React.FC = () => {
       console.error("توکن refresh یافت نشد.");
       return null;
     }
-    const response = await fetch("http://localhost:8000/api/token/refresh/", {
+    const response = await fetch("https://api.grosha.ir/api/token/refresh/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -201,7 +201,7 @@ const ProfessionalDashboard: React.FC = () => {
         console.error("توکن معتبر یافت نشد.");
         return;
       }
-      const response = await fetch("http://localhost:8000/api/products/", {
+      const response = await fetch("https://api.grosha.ir/api/products/", {
         headers: {
           Authorization: `Bearer ${currentToken}`,
         },

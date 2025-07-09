@@ -24,7 +24,7 @@ const SellerLogin: React.FC = () => {
         setError("");
         
         try {
-            const response = await fetch("http://localhost:8000/api/sellers/login/", {
+            const response = await fetch("https://api.grosha.ir/api/sellers/login/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

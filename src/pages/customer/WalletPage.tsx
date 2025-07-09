@@ -45,7 +45,7 @@ const WalletPage: React.FC = () => {
         setError(null);
         try {
             const response = await axios.get(
-                "http://localhost:8000/api/users/bank-cards/",
+                "https://api.grosha.ir/api/users/bank-cards/",
                 getAuthHeaders()
             );
 
@@ -89,7 +89,7 @@ const WalletPage: React.FC = () => {
 
         try {
             await axios.post(
-                "http://localhost:8000/api/users/bank-cards/",
+                "https://api.grosha.ir/api/users/bank-cards/",
                 newCard,
                 getAuthHeaders()
             );
@@ -123,7 +123,7 @@ const WalletPage: React.FC = () => {
 
         try {
             await axios.put(
-                `http://localhost:8000/api/users/bank-cards/${editingCard.id}/`,
+                `https://api.grosha.ir/api/users/bank-cards/${editingCard.id}/`,
                 editingCard,
                 getAuthHeaders()
             );
@@ -144,7 +144,7 @@ const WalletPage: React.FC = () => {
     const handleDeleteCard = async (id: number) => {
         try {
             await axios.delete(
-                `http://localhost:8000/api/users/bank-cards/${id}/`,
+                `https://api.grosha.ir/api/users/bank-cards/${id}/`,
                 getAuthHeaders()
             );
             fetchBankCards();

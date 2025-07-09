@@ -55,7 +55,7 @@ const Sidebar: React.FC = () => {
             }
 
             try {
-                const response = await fetch("http://localhost:8000/api/users/profile/", {
+                const response = await fetch("https://api.grosha.ir/api/users/profile/", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         "Content-Type": "application/json",

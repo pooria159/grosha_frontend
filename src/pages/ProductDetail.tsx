@@ -110,7 +110,7 @@ const ProductDetail: React.FC = () => {
             }
 
             try {
-                const response = await fetch("http://localhost:8000/api/users/profile/", {
+                const response = await fetch("https://api.grosha.ir/api/users/profile/", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         "Content-Type": "application/json",
@@ -158,7 +158,7 @@ const ProductDetail: React.FC = () => {
 
   const fetchComments = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/api/products/${id}/comments/`);
+      const res = await fetch(`https://api.grosha.ir/api/products/${id}/comments/`);
       const realReviews = await res.json();
 
       setReviews(realReviews.map((r: any) => ({
@@ -294,7 +294,7 @@ const ProductDetail: React.FC = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:8000/api/products/${id}/comments/`, {
+      const res = await fetch(`https://api.grosha.ir/api/products/${id}/comments/`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

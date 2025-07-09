@@ -69,7 +69,7 @@ const SupportPage: React.FC = () => {
       addLog("دریافت تیکت‌ها از سرور");
       setLoading(prev => ({ ...prev, fetching: true }));
 
-      const res = await axios.get("http://localhost:8000/api/tickets/", {
+      const res = await axios.get("https://api.grosha.ir/api/tickets/", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -114,7 +114,7 @@ const SupportPage: React.FC = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:8000/api/tickets/",
+        "https://api.grosha.ir/api/tickets/",
         formData,
         {
           headers: { 
@@ -161,7 +161,7 @@ const SupportPage: React.FC = () => {
       }
 
       await axios.post(
-        `http://localhost:8000/api/tickets/${selectedTicket.id}/reply/`,
+        `https://api.grosha.ir/api/tickets/${selectedTicket.id}/reply/`,
         formData,
         {
           headers: { 
@@ -172,7 +172,7 @@ const SupportPage: React.FC = () => {
       );
 
       const updatedTicketResponse = await axios.get(
-        `http://localhost:8000/api/tickets/${selectedTicket.id}/`,
+        `https://api.grosha.ir/api/tickets/${selectedTicket.id}/`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -201,7 +201,7 @@ const SupportPage: React.FC = () => {
       addLog(`به‌روزرسانی وضعیت تیکت ${ticketId} به ${status}`);
 
       await axios.patch(
-        `http://localhost:8000/api/tickets/${ticketId}/`,
+        `https://api.grosha.ir/api/tickets/${ticketId}/`,
         { status },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -214,7 +214,7 @@ const SupportPage: React.FC = () => {
 
       if (selectedTicket && selectedTicket.id === ticketId) {
         const updatedTicketResponse = await axios.get(
-          `http://localhost:8000/api/tickets/${ticketId}/`,
+          `https://api.grosha.ir/api/tickets/${ticketId}/`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

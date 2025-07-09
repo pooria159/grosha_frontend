@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Product } from '../data/products';
 import { Store } from '../data/stores';
 
-const API_URL = 'http://localhost:8000/api';
+const API_URL = 'https://api.grosha.ir/api';
 
 export const getProductsBySubcategory = async (subcategoryName: string) => {
   const encodedName = encodeURIComponent(subcategoryName);

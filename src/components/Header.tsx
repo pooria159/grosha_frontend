@@ -22,7 +22,7 @@ const Header: React.FC = () => {
       setIsSeller(true);
       
       if (token) {
-        fetch("http://localhost:8000/api/sellers/check-shop/", {
+        fetch("https://api.grosha.ir/api/sellers/check-shop/", {
           headers: {
             Authorization: `Bearer ${token}`
           }

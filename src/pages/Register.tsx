@@ -65,7 +65,7 @@ const Register: React.FC = () => {
     if (!validateForm()) return;
 
     try {
-      const checkResponse = await fetch("http://localhost:8000/api/users/check-duplicates/", {
+      const checkResponse = await fetch("https://api.grosha.ir/api/users/check-duplicates/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -91,7 +91,7 @@ const Register: React.FC = () => {
         return;
       }
 
-      const registerResponse = await fetch("http://localhost:8000/api/users/register/", {
+      const registerResponse = await fetch("https://api.grosha.ir/api/users/register/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)

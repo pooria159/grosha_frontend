@@ -28,7 +28,7 @@ const ReviewsPage: React.FC = () => {
         const token = localStorage.getItem("access_token");
         setLoading(true);
 
-        fetch("http://localhost:8000/api/products/user/comments/", {
+        fetch("https://api.grosha.ir/api/products/user/comments/", {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const ReviewsPage: React.FC = () => {
         const token = localStorage.getItem("access_token");
         
         if (window.confirm("آیا از حذف این نظر مطمئن هستید؟")) {
-            fetch(`http://localhost:8000/api/products/comments/${id}/`, {
+            fetch(`https://api.grosha.ir/api/products/comments/${id}/`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -83,7 +83,7 @@ const ReviewsPage: React.FC = () => {
     const handleSaveEdit = (id: number) => {
         const token = localStorage.getItem("access_token");
         
-        fetch(`http://localhost:8000/api/products/comments/${id}/`, {
+        fetch(`https://api.grosha.ir/api/products/comments/${id}/`, {
             method: "PATCH",
             headers: {
                 Authorization: `Bearer ${token}`,

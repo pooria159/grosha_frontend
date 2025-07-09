@@ -67,7 +67,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8000/api/cart/', getAuthHeader());
+      const response = await axios.get('https://api.grosha.ir/api/cart/', getAuthHeader());
       setCart(response.data);
       setError(null);
     } catch (err) {
@@ -105,7 +105,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return;
       }
 
-      const response = await axios.post('http://localhost:8000/api/cart/items/', {
+      const response = await axios.post('https://api.grosha.ir/api/cart/items/', {
         product_id: productId,
         seller_id: sellerId,
         quantity,
@@ -134,7 +134,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     try {
       setLoading(true);
-      await axios.patch(`http://localhost:8000/api/cart/items/${itemId}/`, { quantity }, getAuthHeader());
+      await axios.patch(`https://api.grosha.ir/api/cart/items/${itemId}/`, { quantity }, getAuthHeader());
       await fetchCart();
     } catch (err) {
       console.error('Error updating cart item:', err);
@@ -152,7 +152,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     try {
       setLoading(true);
-      await axios.delete(`http://localhost:8000/api/cart/items/${itemId}/remove/`, getAuthHeader());
+      await axios.delete(`https://api.grosha.ir/api/cart/items/${itemId}/remove/`, getAuthHeader());
       await fetchCart();
       toast.success('محصول از سبد خرید حذف شد');
     } catch (err) {
@@ -171,7 +171,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     try {
       setLoading(true);
-      await axios.delete(`http://localhost:8000/api/cart/items/${productId}/${sellerId}/remove/`, getAuthHeader());
+      await axios.delete(`https://api.grosha.ir/api/cart/items/${productId}/${sellerId}/remove/`, getAuthHeader());
       await fetchCart();
       toast.success('محصول از سبد خرید حذف شد');
     } catch (err) {
@@ -190,7 +190,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     try {
       setLoading(true);
-      await axios.delete('http://localhost:8000/api/cart/clear/', getAuthHeader());
+      await axios.delete('https://api.grosha.ir/api/cart/clear/', getAuthHeader());
       await fetchCart();
       toast.success('سبد خرید خالی شد');
     } catch (err) {

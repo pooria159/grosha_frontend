@@ -24,7 +24,7 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/api/token/", {
+      const response = await fetch("https://api.grosha.ir/api/token/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials)

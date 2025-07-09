@@ -69,7 +69,7 @@ const DiscountManagement: React.FC = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/token/refresh/", {
+      const response = await fetch("https://api.grosha.ir/api/token/refresh/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -107,7 +107,7 @@ const DiscountManagement: React.FC = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:8000/api/discount/", {
+      const response = await fetch("https://api.grosha.ir/api/discount/", {
         headers: {
           Authorization: `Bearer ${currentToken}`,
         },
@@ -179,7 +179,7 @@ const DiscountManagement: React.FC = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:8000/api/discount/", {
+      const response = await fetch("https://api.grosha.ir/api/discount/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -231,7 +231,7 @@ const DiscountManagement: React.FC = () => {
         return;
       }
 
-      const response = await fetch(`http://localhost:8000/api/discount/${id}/`, {
+      const response = await fetch(`https://api.grosha.ir/api/discount/${id}/`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${currentToken}`,
@@ -291,7 +291,7 @@ const DiscountManagement: React.FC = () => {
         return;
       }
 
-      const response = await fetch(`http://localhost:8000/api/discount/${editDiscountId}/`, {
+      const response = await fetch(`https://api.grosha.ir/api/discount/${editDiscountId}/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

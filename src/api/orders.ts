@@ -35,7 +35,7 @@ interface CheckoutItem {
 }
 
 
-const API_URL = 'http://localhost:8000/api/orders';
+const API_URL = 'https://api.grosha.ir/api/orders';
 
 export const getOrders = async (): Promise<Order[]> => {
   try {

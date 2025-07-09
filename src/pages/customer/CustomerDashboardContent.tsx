@@ -87,7 +87,7 @@ const CustomerDashboardContent: React.FC = () => {
                 const token = localStorage.getItem("access_token");
                 try {
                     setLoading(true);
-                    const res = await axios.get("http://localhost:8000/api/discounts/", {
+                    const res = await axios.get("https://api.grosha.ir/api/discounts/", {
                         headers: { Authorization: `Bearer ${token}` },
                     });
                     
@@ -113,7 +113,7 @@ const CustomerDashboardContent: React.FC = () => {
             }
 
             try {
-                const response = await fetch("http://localhost:8000/api/users/profile/", {
+                const response = await fetch("https://api.grosha.ir/api/users/profile/", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         "Content-Type": "application/json",

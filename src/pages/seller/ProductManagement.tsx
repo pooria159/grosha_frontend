@@ -64,7 +64,7 @@ const ProductManagement: React.FC = () => {
             return null;
         }
 
-        const response = await fetch("http://localhost:8000/api/token/refresh/", {
+        const response = await fetch("https://api.grosha.ir/api/token/refresh/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -97,7 +97,7 @@ const ProductManagement: React.FC = () => {
                 return;
             }
 
-            const response = await fetch("http://localhost:8000/api/products/", {
+            const response = await fetch("https://api.grosha.ir/api/products/", {
                 headers: {
                     Authorization: `Bearer ${currentToken}`,
                 },
@@ -153,7 +153,7 @@ const ProductManagement: React.FC = () => {
             return;
         }
 
-        const response = await fetch("http://localhost:8000/api/products/", {
+        const response = await fetch("https://api.grosha.ir/api/products/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -174,7 +174,7 @@ const ProductManagement: React.FC = () => {
     };
 
     const handleDeleteProduct = async (id: number) => {
-        const response = await fetch(`http://localhost:8000/api/products/${id}/`, {
+        const response = await fetch(`https://api.grosha.ir/api/products/${id}/`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -220,7 +220,7 @@ const ProductManagement: React.FC = () => {
             return;
         }
 
-        const response = await fetch(`http://localhost:8000/api/products/${editProductId}/`, {
+        const response = await fetch(`https://api.grosha.ir/api/products/${editProductId}/`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

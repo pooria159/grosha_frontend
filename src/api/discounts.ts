@@ -19,7 +19,7 @@ export const applyDiscount = async (
 ): Promise<DiscountResponse> => {
   const token = localStorage.getItem("access_token");
   const response = await axios.post<DiscountResponse>(
-    "http://localhost:8000/api/discounts/apply/",
+    "https://api.grosha.ir/api/discounts/apply/",
     { 
       code, 
       store_id: storeId,

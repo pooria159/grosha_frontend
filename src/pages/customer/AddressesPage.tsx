@@ -21,7 +21,7 @@ const AddressesPage: React.FC = () => {
   const token = localStorage.getItem("access_token");
 
   const fetchAddresses = () => {
-    fetch("http://localhost:8000/api/users/addresses/", {
+    fetch("https://api.grosha.ir/api/users/addresses/", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
@@ -64,8 +64,8 @@ const AddressesPage: React.FC = () => {
 
     const method = editingId ? "PUT" : "POST";
     const url = editingId 
-      ? `http://localhost:8000/api/users/addresses/${editingId}/`
-      : "http://localhost:8000/api/users/addresses/";
+      ? `https://api.grosha.ir/api/users/addresses/${editingId}/`
+      : "https://api.grosha.ir/api/users/addresses/";
 
     fetch(url, {
       method,
@@ -116,7 +116,7 @@ const AddressesPage: React.FC = () => {
   const handleDelete = (id: number) => {
     if (!window.confirm("آیا از حذف این آدرس مطمئن هستید؟")) return;
 
-    fetch(`http://localhost:8000/api/users/addresses/${id}/`, {
+    fetch(`https://api.grosha.ir/api/users/addresses/${id}/`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`
@@ -141,7 +141,7 @@ const AddressesPage: React.FC = () => {
   };
 
   const setAsDefault = (id: number) => {
-    fetch(`http://localhost:8000/api/users/addresses/${id}/set_default/`, {
+    fetch(`https://api.grosha.ir/api/users/addresses/${id}/set_default/`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,

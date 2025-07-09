@@ -96,7 +96,7 @@ const Settings: React.FC = () => {
   const fetchShopSettings = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get("http://localhost:8000/api/sellers/settings/", getAuthHeaders());
+      const response = await axios.get("https://api.grosha.ir/api/sellers/settings/", getAuthHeaders());
       
       const data = response.data || {};
       setShopSettings({
@@ -220,7 +220,7 @@ const Settings: React.FC = () => {
       formData.append("is_active", shopSettings.is_active.toString());
 
       const response = await axios.put(
-        "http://localhost:8000/api/sellers/settings/",
+        "https://api.grosha.ir/api/sellers/settings/",
         formData,
         {
           ...getAuthHeadersFormData(),
@@ -263,7 +263,7 @@ const Settings: React.FC = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8000/api/sellers/shipping-methods/", {
+      const response = await axios.post("https://api.grosha.ir/api/sellers/shipping-methods/", {
         name: newShippingMethod.trim()
       }, getAuthHeaders());
 
@@ -286,7 +286,7 @@ const Settings: React.FC = () => {
         return;
       }
 
-      await axios.delete(`http://localhost:8000/api/sellers/shipping-methods/${id}/`, getAuthHeaders());
+      await axios.delete(`https://api.grosha.ir/api/sellers/shipping-methods/${id}/`, getAuthHeaders());
       setShopSettings(prev => ({
         ...prev,
         shipping_methods: prev.shipping_methods.filter(method => method.id !== id)
@@ -314,7 +314,7 @@ const Settings: React.FC = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8000/api/sellers/payment-gateways/", {
+      const response = await axios.post("https://api.grosha.ir/api/sellers/payment-gateways/", {
         name: newPaymentGateway.trim()
       }, getAuthHeaders());
 
@@ -337,7 +337,7 @@ const Settings: React.FC = () => {
         return;
       }
 
-      await axios.delete(`http://localhost:8000/api/sellers/payment-gateways/${id}/`, getAuthHeaders());
+      await axios.delete(`https://api.grosha.ir/api/sellers/payment-gateways/${id}/`, getAuthHeaders());
       setShopSettings(prev => ({
         ...prev,
         payment_gateways: prev.payment_gateways.filter(gateway => gateway.id !== id)
