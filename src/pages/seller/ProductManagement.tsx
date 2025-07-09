@@ -127,9 +127,6 @@ const ProductManagement: React.FC = () => {
         fetchProducts();
     }, []);
 
-
-
-
     const handleAddProduct = async () => {
         const cleanedProduct = {
             ...newProduct,
@@ -358,7 +355,7 @@ const ProductManagement: React.FC = () => {
     );
 
     return (
-        <div className="bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] min-h-screen p-4 md:p-8" style={{ direction: 'rtl' }}>
+        <div className="bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] min-h-screen p-2 sm:p-4 md:p-6 lg:p-8" style={{ direction: 'rtl' }}>
             <button 
                 onClick={handleScrollToTop}
                 className="fixed bottom-6 left-6 bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] text-white p-3 rounded-full shadow-lg z-10 hover:shadow-xl transition-all duration-300 hover:scale-110"
@@ -367,18 +364,18 @@ const ProductManagement: React.FC = () => {
             </button>
 
             <div className="max-w-7xl mx-auto">
-                <div className="mb-8 text-center" ref={topRef}>
-                    <h1 className="text-3xl md:text-4xl font-bold text-[#1e293b] mb-3 relative inline-block">
+                <div className="mb-6 md:mb-8 text-center" ref={topRef}>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1e293b] mb-2 md:mb-3 relative inline-block">
                         مدیریت محصولات
                     </h1>
-                    <p className="text-[#64748b] max-w-2xl mx-auto">
+                    <p className="text-[#64748b] text-sm sm:text-base max-w-2xl mx-auto">
                         مدیریت و سازماندهی محصولات فروشگاه شما با امکانات پیشرفته
                     </p>
                 </div>
 
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 overflow-hidden mb-8">
-                    <div className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] p-4 text-white">
-                        <h2 className="text-xl font-semibold flex items-center">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-white/50 overflow-hidden mb-6 md:mb-8">
+                    <div className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] p-3 sm:p-4 text-white">
+                        <h2 className="text-lg sm:text-xl font-semibold flex items-center justify-center sm:justify-start">
                             {editProductId ? (
                                 <>
                                     <FiEdit2 className="ml-2" />
@@ -393,17 +390,17 @@ const ProductManagement: React.FC = () => {
                         </h2>
                     </div>
                     
-                    <div className="p-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div className="space-y-2">
-                                <label className="block text-[#334155] font-medium">نام محصول <span className="text-red-500">*</span></label>
+                    <div className="p-4 sm:p-6">
+                        <div className="grid grid-cols-1 gap-4 sm:gap-6 mb-4 sm:mb-6">
+                            <div className="space-y-1 sm:space-y-2">
+                                <label className="block text-[#334155] text-sm sm:text-base font-medium">نام محصول <span className="text-red-500">*</span></label>
                                 <div className="relative">
                                     <input
                                         type="text"
                                         placeholder="نام محصول"
                                         value={newProduct.name}
                                         onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
-                                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
+                                        className="w-full p-2 sm:p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all text-sm sm:text-base"
                                     />
                                     {newProduct.name && (
                                         <FiCheck className="absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500" />
@@ -411,13 +408,13 @@ const ProductManagement: React.FC = () => {
                                 </div>
                             </div>
                             
-                            <div className="space-y-2">
-                                <label className="block text-[#334155] font-medium">دسته‌بندی <span className="text-red-500">*</span></label>
+                            <div className="space-y-1 sm:space-y-2">
+                                <label className="block text-[#334155] text-sm sm:text-base font-medium">دسته‌بندی <span className="text-red-500">*</span></label>
                                 <div className="relative">
                                     <select
                                         value={newProduct.category}
                                         onChange={handleCategoryChange}
-                                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all appearance-none bg-white pr-3"
+                                        className="w-full p-2 sm:p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all appearance-none bg-white pr-3 text-sm sm:text-base"
                                     >
                                         <option value="">انتخاب دسته‌بندی</option>
                                         {categories.map((category) => (
@@ -431,13 +428,13 @@ const ProductManagement: React.FC = () => {
                             </div>
                             
                             {selectedCategory && (
-                                <div className="space-y-2">
-                                    <label className="block text-[#334155] font-medium">زیرمجموعه <span className="text-red-500">*</span></label>
+                                <div className="space-y-1 sm:space-y-2">
+                                    <label className="block text-[#334155] text-sm sm:text-base font-medium">زیرمجموعه <span className="text-red-500">*</span></label>
                                     <div className="relative">
                                         <select
                                             value={newProduct.subcategory}
                                             onChange={handleSubcategoryChange}
-                                            className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all appearance-none bg-white pr-3"
+                                            className="w-full p-2 sm:p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all appearance-none bg-white pr-3 text-sm sm:text-base"
                                         >
                                             <option value="">انتخاب زیرمجموعه</option>
                                             {selectedCategory.subcategories.map((subcategory) => (
@@ -451,8 +448,8 @@ const ProductManagement: React.FC = () => {
                                 </div>
                             )}
                             
-                            <div className="space-y-2">
-                                <label className="block text-[#334155] font-medium">قیمت (تومان) <span className="text-red-500">*</span></label>
+                            <div className="space-y-1 sm:space-y-2">
+                                <label className="block text-[#334155] text-sm sm:text-base font-medium">قیمت (تومان) <span className="text-red-500">*</span></label>
                                 <div className="relative">
                                     <input
                                         type="number"
@@ -460,30 +457,30 @@ const ProductManagement: React.FC = () => {
                                         placeholder="قیمت"
                                         value={newProduct.price || ""}
                                         onChange={(e) => setNewProduct({ ...newProduct, price: +e.target.value })}
-                                        className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all pl-10"
+                                        className="w-full p-2 sm:p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all pl-10 text-sm sm:text-base"
                                     />
-                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">تومان</span>
+                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm sm:text-base">تومان</span>
                                 </div>
                             </div>
                             
-                            <div className="space-y-2">
-                                <label className="block text-[#334155] font-medium">موجودی <span className="text-red-500">*</span></label>
+                            <div className="space-y-1 sm:space-y-2">
+                                <label className="block text-[#334155] text-sm sm:text-base font-medium">موجودی <span className="text-red-500">*</span></label>
                                 <input
                                     type="number"
                                     min="0"
                                     placeholder="موجودی"
                                     value={newProduct.stock || ""}
                                     onChange={(e) => setNewProduct({ ...newProduct, stock: +e.target.value })}
-                                    className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
+                                    className="w-full p-2 sm:p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all text-sm sm:text-base"
                                 />
                             </div>
                         </div>
                         
-                        <div className="flex flex-col md:flex-row items-center gap-4">
+                        <div className="flex flex-col sm:flex-row items-center gap-3">
                             <button
                                 onClick={editProductId ? handleSaveEdit : handleAddProduct}
                                 disabled={!newProduct.name || !newProduct.category || !newProduct.subcategory || newProduct.price <= 0 || newProduct.stock < 0}
-                                className={`px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-lg flex-1 md:flex-none flex items-center justify-center ${
+                                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 hover:shadow-lg w-full sm:w-auto flex items-center justify-center ${
                                     editProductId 
                                         ? "bg-gradient-to-r from-[#10b981] to-[#059669] text-white hover:from-[#059669] hover:to-[#047857]"
                                         : "bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] text-white hover:from-[#2563eb] hover:to-[#1e40af]"
@@ -495,12 +492,12 @@ const ProductManagement: React.FC = () => {
                             >
                                 {editProductId ? (
                                     <>
-                                        <FiEdit2 className="ml-2" />
+                                        <FiEdit2 className="ml-1 sm:ml-2" />
                                         ذخیره تغییرات
                                     </>
                                 ) : (
                                     <>
-                                        <FiPlus className="ml-2" />
+                                        <FiPlus className="ml-1 sm:ml-2" />
                                         افزودن محصول
                                     </>
                                 )}
@@ -509,9 +506,9 @@ const ProductManagement: React.FC = () => {
                             {editProductId && (
                                 <button
                                     onClick={handleCancelEdit}
-                                    className="px-8 py-3 bg-gradient-to-r from-[#ef4444] to-[#dc2626] text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:from-[#dc2626] hover:to-[#b91c1c] flex-1 md:flex-none flex items-center justify-center"
+                                    className="px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#ef4444] to-[#dc2626] text-white rounded-lg transition-all duration-300 hover:shadow-lg w-full sm:w-auto flex items-center justify-center"
                                 >
-                                    <FiX className="ml-2" />
+                                    <FiX className="ml-1 sm:ml-2" />
                                     انصراف از ویرایش
                                 </button>
                             )}
@@ -519,23 +516,23 @@ const ProductManagement: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-6 mb-8">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                        <div className="w-full md:w-auto">
-                            <h2 className="text-xl font-semibold text-[#1e293b] mb-2 md:mb-0 flex items-center">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-white/50 p-4 sm:p-6 mb-6 md:mb-8">
+                    <div className="flex flex-col gap-4">
+                        <div className="w-full">
+                            <h2 className="text-lg sm:text-xl font-semibold text-[#1e293b] flex items-center">
                                 <FiSearch className="ml-2 text-[#3b82f6]" />
                                 جستجوی محصولات
                             </h2>
                         </div>
                         
-                        <div className="w-full md:w-auto flex flex-col md:flex-row gap-3">
+                        <div className="w-full flex flex-col sm:flex-row gap-3">
                             <div className="relative flex-1">
                                 <input
                                     type="text"
                                     placeholder="جستجوی محصولات..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full p-3 pr-12 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all"
+                                    className="w-full p-2 sm:p-3 pr-10 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6] focus:border-transparent transition-all text-sm sm:text-base"
                                 />
                                 <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                             </div>
@@ -543,19 +540,19 @@ const ProductManagement: React.FC = () => {
                             <div className="relative">
                                 <button
                                     onClick={() => setShowFilters(!showFilters)}
-                                    className="flex items-center justify-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                                    className="flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors w-full sm:w-auto"
                                 >
                                     <FiFilter className="text-[#3b82f6]" />
-                                    <span>فیلترها</span>
+                                    <span className="text-sm sm:text-base">فیلترها</span>
                                 </button>
                                 
                                 {showFilters && (
-                                    <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 z-10 p-4">
-                                        <div className="space-y-3">
+                                    <div className="absolute left-0 mt-2 w-full sm:w-56 bg-white rounded-lg shadow-xl border border-gray-200 z-10 p-3 sm:p-4">
+                                        <div className="space-y-2 sm:space-y-3">
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-700 mb-1">وضعیت موجودی</label>
+                                                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">وضعیت موجودی</label>
                                                 <select 
-                                                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-[#3b82f6] focus:border-[#3b82f6]"
+                                                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-[#3b82f6] focus:border-[#3b82f6] text-xs sm:text-sm"
                                                     value={activeTab}
                                                     onChange={(e) => setActiveTab(e.target.value as "all" | "inStock" | "outOfStock")}
                                                 >
@@ -566,9 +563,9 @@ const ProductManagement: React.FC = () => {
                                             </div>
                                             
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-700 mb-1">دسته‌بندی</label>
+                                                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">دسته‌بندی</label>
                                                 <select 
-                                                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-[#3b82f6] focus:border-[#3b82f6]"
+                                                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-[#3b82f6] focus:border-[#3b82f6] text-xs sm:text-sm"
                                                 >
                                                     <option value="">همه دسته‌بندی‌ها</option>
                                                     {categories.map(category => (
@@ -583,9 +580,9 @@ const ProductManagement: React.FC = () => {
                         </div>
                     </div>
                     
-                    <div className="flex border-b border-gray-200 mt-6">
+                    <div className="flex overflow-x-auto border-b border-gray-200 mt-4 sm:mt-6">
                         <button
-                            className={`py-2 px-4 font-medium text-sm flex items-center border-b-2 transition-colors ${
+                            className={`py-2 px-3 sm:px-4 font-medium text-xs sm:text-sm flex items-center border-b-2 transition-colors whitespace-nowrap ${
                                 activeTab === "all" 
                                     ? "border-[#3b82f6] text-[#3b82f6]" 
                                     : "border-transparent text-gray-500 hover:text-gray-700"
@@ -593,13 +590,13 @@ const ProductManagement: React.FC = () => {
                             onClick={() => setActiveTab("all")}
                         >
                             همه محصولات
-                            <span className="bg-gray-100 text-gray-600 rounded-full px-2 py-0.5 text-xs font-medium mr-2">
+                            <span className="bg-gray-100 text-gray-600 rounded-full px-1.5 sm:px-2 py-0.5 text-xs font-medium mr-1 sm:mr-2">
                                 {products.length}
                             </span>
                         </button>
                         
                         <button
-                            className={`py-2 px-4 font-medium text-sm flex items-center border-b-2 transition-colors ${
+                            className={`py-2 px-3 sm:px-4 font-medium text-xs sm:text-sm flex items-center border-b-2 transition-colors whitespace-nowrap ${
                                 activeTab === "inStock" 
                                     ? "border-[#10b981] text-[#10b981]" 
                                     : "border-transparent text-gray-500 hover:text-gray-700"
@@ -607,13 +604,13 @@ const ProductManagement: React.FC = () => {
                             onClick={() => setActiveTab("inStock")}
                         >
                             موجود در انبار
-                            <span className="bg-gray-100 text-gray-600 rounded-full px-2 py-0.5 text-xs font-medium mr-2">
+                            <span className="bg-gray-100 text-gray-600 rounded-full px-1.5 sm:px-2 py-0.5 text-xs font-medium mr-1 sm:mr-2">
                                 {products.filter(p => p.stock > 0).length}
                             </span>
                         </button>
                         
                         <button
-                            className={`py-2 px-4 font-medium text-sm flex items-center border-b-2 transition-colors ${
+                            className={`py-2 px-3 sm:px-4 font-medium text-xs sm:text-sm flex items-center border-b-2 transition-colors whitespace-nowrap ${
                                 activeTab === "outOfStock" 
                                     ? "border-[#ef4444] text-[#ef4444]" 
                                     : "border-transparent text-gray-500 hover:text-gray-700"
@@ -621,36 +618,36 @@ const ProductManagement: React.FC = () => {
                             onClick={() => setActiveTab("outOfStock")}
                         >
                             ناموجود
-                            <span className="bg-gray-100 text-gray-600 rounded-full px-2 py-0.5 text-xs font-medium mr-2">
+                            <span className="bg-gray-100 text-gray-600 rounded-full px-1.5 sm:px-2 py-0.5 text-xs font-medium mr-1 sm:mr-2">
                                 {products.filter(p => p.stock === 0).length}
                             </span>
                         </button>
                     </div>
                 </div>
 
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 overflow-hidden">
-                    <div className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] p-4 text-white">
-                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <h2 className="text-xl font-semibold flex items-center">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-lg border border-white/50 overflow-hidden">
+                    <div className="bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] p-3 sm:p-4 text-white">
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0">
+                            <h2 className="text-lg sm:text-xl font-semibold flex items-center">
                                 لیست محصولات
-                                <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-medium mr-3">
+                                <span className="bg-white/20 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-medium mr-2 sm:mr-3">
                                     {filteredProducts.length} محصول
                                 </span>
                             </h2>
                             
-                            <div className="mt-2 md:mt-0 flex items-center gap-2">
+                            <div className="mt-1 sm:mt-0 flex items-center gap-1 sm:gap-2">
                                 <button 
                                     onClick={handleExportExcel}
-                                    className="flex items-center gap-1 px-3 py-1.5 bg-white/10 rounded-lg text-sm hover:bg-white/20 transition-colors"
+                                    className="flex items-center gap-1 px-2 sm:px-3 py-1 sm:py-1.5 bg-white/10 rounded-lg text-xs sm:text-sm hover:bg-white/20 transition-colors"
                                 >
-                                    <FiDownload size={14} />
+                                    <FiDownload size={12} className="sm:size-[14px]" />
                                     خروجی Excel
                                 </button>
                             </div>
                         </div>
                     </div>
                     
-                    <div className="p-6">
+                    <div className="p-2 sm:p-4 md:p-6">
                         {loading ? (
                             <Loader />
                         ) : (
@@ -658,45 +655,45 @@ const ProductManagement: React.FC = () => {
                                 <table className="min-w-full divide-y divide-gray-200">
                                     <thead className="bg-gray-50">
                                         <tr>
-                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">نام محصول</th>
-                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">دسته بندی</th>
-                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">زیر مجموعه</th>
-                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">قیمت (تومان)</th>
-                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">موجودی</th>
-                                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">عملیات</th>
+                                            <th className="px-3 sm:px-4 py-2 sm:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">نام محصول</th>
+                                            <th className="px-3 sm:px-4 py-2 sm:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">دسته بندی</th>
+                                            <th className="px-3 sm:px-4 py-2 sm:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">زیر مجموعه</th>
+                                            <th className="px-3 sm:px-4 py-2 sm:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">قیمت (تومان)</th>
+                                            <th className="px-3 sm:px-4 py-2 sm:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">موجودی</th>
+                                            <th className="px-3 sm:px-4 py-2 sm:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">عملیات</th>
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
                                         {filteredProducts.map((product) => (
                                             <tr key={product.id} className="hover:bg-gray-50 transition-colors">
-                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                <td className="px-3 sm:px-4 py-3 sm:py-4 whitespace-nowrap">
                                                     <div className="text-sm font-medium text-[#1e293b]">{product.name}</div>
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                <td className="px-3 sm:px-4 py-3 sm:py-4 whitespace-nowrap">
                                                     <span className="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
                                                         {product.category}
                                                     </span>
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-[#475569]">
+                                                <td className="px-3 sm:px-4 py-3 sm:py-4 whitespace-nowrap text-sm text-[#475569]">
                                                     {product.subcategory}
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#1e293b]">
+                                                <td className="px-3 sm:px-4 py-3 sm:py-4 whitespace-nowrap text-sm font-medium text-[#1e293b]">
                                                     {product.price.toLocaleString('fa-IR')} تومان
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                <td className="px-3 sm:px-4 py-3 sm:py-4 whitespace-nowrap">
                                                     <ProductStatusBadge stock={product.stock} />
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-[#475569]">
-                                                    <div className="flex items-center space-x-2 space-x-reverse">
+                                                <td className="px-3 sm:px-4 py-3 sm:py-4 whitespace-nowrap text-sm text-[#475569]">
+                                                    <div className="flex items-center space-x-1 sm:space-x-2 space-x-reverse">
                                                         <button
                                                             onClick={() => {
                                                                 handleEditProduct(product.id);
                                                                 handleScrollToTop();
                                                             }}
-                                                            className="text-[#3b82f6] hover:text-[#1d4ed8] transition-colors p-2 rounded-full hover:bg-blue-50"
+                                                            className="text-[#3b82f6] hover:text-[#1d4ed8] transition-colors p-1 sm:p-2 rounded-full hover:bg-blue-50"
                                                             title="ویرایش"
                                                         >
-                                                            <FiEdit2 size={18} />
+                                                            <FiEdit2 size={16} className="sm:size-[18px]" />
                                                         </button>
                                                         
                                                         <button
@@ -704,10 +701,10 @@ const ProductManagement: React.FC = () => {
                                                                 setShowDeleteModal(true);
                                                                 setProductToDelete(product.id);
                                                             }}
-                                                            className="text-[#ef4444] hover:text-[#dc2626] transition-colors p-2 rounded-full hover:bg-red-50"
+                                                            className="text-[#ef4444] hover:text-[#dc2626] transition-colors p-1 sm:p-2 rounded-full hover:bg-red-50"
                                                             title="حذف"
                                                         >
-                                                            <FiTrash2 size={18} />
+                                                            <FiTrash2 size={16} className="sm:size-[18px]" />
                                                         </button>
                                                     </div>
                                                 </td>
@@ -717,12 +714,12 @@ const ProductManagement: React.FC = () => {
                                 </table>
                                 
                                 {filteredProducts.length === 0 && !loading && (
-                                    <div className="text-center py-12">
-                                        <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                                            <BsExclamationCircle size={32} className="text-gray-400" />
+                                    <div className="text-center py-8 sm:py-12">
+                                        <div className="mx-auto w-16 sm:w-20 h-16 sm:h-20 bg-gray-100 rounded-full flex items-center justify-center mb-3 sm:mb-4">
+                                            <BsExclamationCircle size={24} className="sm:size-[32px] text-gray-400" />
                                         </div>
-                                        <h3 className="text-lg font-medium text-[#334155]">محصولی یافت نشد</h3>
-                                        <p className="text-[#64748b] mt-1">
+                                        <h3 className="text-base sm:text-lg font-medium text-[#334155]">محصولی یافت نشد</h3>
+                                        <p className="text-[#64748b] text-sm sm:text-base mt-1">
                                             {searchQuery 
                                                 ? "هیچ محصولی با معیارهای جستجوی شما مطابقت ندارد" 
                                                 : activeTab === "inStock" 
@@ -741,21 +738,21 @@ const ProductManagement: React.FC = () => {
 
             {showDeleteModal && (
                 <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">
-                    <div className="bg-white rounded-xl shadow-xl overflow-hidden w-full max-w-md">
-                        <div className="bg-gradient-to-r from-[#ef4444] to-[#dc2626] p-4 text-white">
-                            <h3 className="text-lg font-semibold flex items-center">
-                                <FiTrash2 className="ml-2" />
+                    <div className="bg-white rounded-lg sm:rounded-xl shadow-xl overflow-hidden w-full max-w-md">
+                        <div className="bg-gradient-to-r from-[#ef4444] to-[#dc2626] p-3 sm:p-4 text-white">
+                            <h3 className="text-base sm:text-lg font-semibold flex items-center justify-center sm:justify-start">
+                                <FiTrash2 className="ml-1 sm:ml-2" />
                                 حذف محصول
                             </h3>
                         </div>
                         
-                        <div className="p-6">
-                            <p className="text-[#475569] mb-6">آیا مطمئن هستید که می‌خواهید این محصول را حذف کنید؟ این عمل برگشت‌پذیر نیست.</p>
+                        <div className="p-4 sm:p-6">
+                            <p className="text-[#475569] text-sm sm:text-base mb-4 sm:mb-6">آیا مطمئن هستید که می‌خواهید این محصول را حذف کنید؟ این عمل برگشت‌پذیر نیست.</p>
                             
-                            <div className="flex justify-end space-x-3 space-x-reverse">
+                            <div className="flex justify-end space-x-2 sm:space-x-3 space-x-reverse">
                                 <button
                                     onClick={() => setShowDeleteModal(false)}
-                                    className="px-4 py-2 border border-gray-300 rounded-lg text-[#334155] hover:bg-gray-50 transition-colors"
+                                    className="px-3 sm:px-4 py-1.5 sm:py-2 border border-gray-300 rounded-lg text-[#334155] text-sm sm:text-base hover:bg-gray-50 transition-colors"
                                 >
                                     انصراف
                                 </button>
@@ -765,7 +762,7 @@ const ProductManagement: React.FC = () => {
                                             handleDeleteProduct(productToDelete);
                                         }
                                     }}
-                                    className="px-4 py-2 bg-gradient-to-r from-[#ef4444] to-[#dc2626] text-white rounded-lg hover:shadow-md transition-all"
+                                    className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-[#ef4444] to-[#dc2626] text-white rounded-lg hover:shadow-md transition-all text-sm sm:text-base"
                                 >
                                     حذف محصول
                                 </button>
