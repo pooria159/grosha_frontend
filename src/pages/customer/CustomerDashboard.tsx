@@ -21,7 +21,7 @@ const CustomerDashboard: React.FC = () => {
 
       <div
         className={`flex-1 transition-all duration-300 ${
-          isMobileView ? "mr-0" : "md:ml-64"
+          isMobileView ? "mr-0" : "md:ml-0"
         }`}
       >
         <div className="p-4 md:p-8 h-screen overflow-y-auto bg-[#ffffff]">
