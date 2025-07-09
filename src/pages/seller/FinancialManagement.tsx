@@ -250,27 +250,27 @@ const FinancialDashboard: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen p-4 md:p-6" style={{ direction: "rtl" }}>
+    <div className="bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen p-3 md:p-6" style={{ direction: "rtl" }}>
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="space-y-6"
+          className="space-y-4 md:space-y-6"
         >
-          <motion.div variants={itemVariants} className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <motion.div variants={itemVariants} className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
             <div>
-              <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 flex items-center">
-                <MdOutlineTrendingUp className="ml-2 text-indigo-600" size={24} />
+              <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-gray-800 flex items-center">
+                <MdOutlineTrendingUp className="ml-1 md:ml-2 text-indigo-600" size={20} />
                 داشبورد مالی
               </h1>
-              <p className="text-sm md:text-base text-gray-600 mt-1 md:mt-2">وضعیت مالی و تراکنش‌های شما در یک نگاه</p>
+              <p className="text-xs md:text-base text-gray-600 mt-1">وضعیت مالی و تراکنش‌های شما در یک نگاه</p>
             </div>
             <div className="w-full md:w-auto">
               <select
                 value={timeRange}
                 onChange={(e) => setTimeRange(e.target.value)}
-                className="w-full md:w-auto bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm md:text-base shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full md:w-auto bg-white border border-gray-300 rounded-lg px-2 py-1 md:px-3 md:py-2 text-xs md:text-sm shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               >
                 <option value="monthly">نمایش ماهانه</option>
                 <option value="weekly">نمایش هفتگی</option>
@@ -278,23 +278,23 @@ const FinancialDashboard: React.FC = () => {
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="flex flex-col gap-4">
+          <motion.div variants={itemVariants} className="flex flex-col gap-3">
             <div className="relative">
-              <MdSearch className="absolute left-3 top-3 text-gray-400" size={18} />
+              <MdSearch className="absolute left-2 top-2.5 text-gray-400" size={16} />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full p-2 md:p-3 border border-gray-300 rounded-lg shadow-sm pr-10 pl-10 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm md:text-base"
+                className="w-full p-2 md:p-3 border border-gray-300 rounded-lg shadow-sm pr-8 pl-8 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-xs md:text-sm"
                 placeholder="جستجوی سفارشات..."
               />
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1 md:gap-2">
               {orderStatuses.map((status) => (
                 <button
                   key={status.value}
                   onClick={() => setActiveFilter(status.value)}
-                  className={`px-3 py-1 md:px-4 md:py-2 rounded-lg transition-all text-xs md:text-sm ${
+                  className={`px-2 py-0.5 md:px-3 md:py-1 rounded-lg transition-all text-xs ${
                     activeFilter === status.value
                       ? 'bg-indigo-600 text-white shadow-md'
                       : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
@@ -306,12 +306,12 @@ const FinancialDashboard: React.FC = () => {
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
             <SummaryCard
               title="کل درآمد"
               value={totalRevenue}
               change={`${completedOrders.length} سفارش تکمیل شده`}
-              icon={<MdCheckCircleOutline size={20} className="text-green-600" />}
+              icon={<MdCheckCircleOutline size={18} className="text-green-600" />}
               color="green"
               loading={loading}
             />
@@ -319,7 +319,7 @@ const FinancialDashboard: React.FC = () => {
               title="در انتظار تسویه"
               value={pendingAmount}
               change={`${pendingOrders.length} سفارش در انتظار`}
-              icon={<MdSync size={20} className="text-yellow-600 animate-spin" />}
+              icon={<MdSync size={18} className="text-yellow-600 animate-spin" />}
               color="yellow"
               loading={loading}
             />
@@ -327,21 +327,21 @@ const FinancialDashboard: React.FC = () => {
               title="سفارشات لغو شده"
               value={cancelledAmount}
               change={`${cancelledOrders.length} سفارش لغو شده`}
-              icon={<MdOutlineCancel size={20} className="text-red-600" />}
+              icon={<MdOutlineCancel size={18} className="text-red-600" />}
               color="red"
               loading={loading}
             />
           </motion.div>
 
-          <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
-            <div className="lg:col-span-2 bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border-l-4 border-indigo-500">
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-4 gap-2">
-                <h3 className="text-lg md:text-xl font-semibold text-indigo-700 flex items-center">
-                  <MdOutlineShowChart className="ml-2" size={18} />
+          <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-6">
+            <div className="lg:col-span-2 bg-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-sm border-l-4 border-indigo-500">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-3 gap-1">
+                <h3 className="text-base md:text-lg font-semibold text-indigo-700 flex items-center">
+                  <MdOutlineShowChart className="ml-1" size={16} />
                   عملکرد مالی {timeRange === "monthly" ? "ماهیانه" : "هفتگی"}
                 </h3>
                 <select 
-                  className="bg-gray-100 border border-gray-300 text-gray-700 py-1 px-2 md:px-3 rounded-lg focus:outline-none text-xs md:text-sm"
+                  className="bg-gray-100 border border-gray-300 text-gray-700 py-0.5 px-1 md:px-2 rounded-lg focus:outline-none text-xs"
                   value={timeRange}
                   onChange={(e) => setTimeRange(e.target.value)}
                 >
@@ -349,9 +349,9 @@ const FinancialDashboard: React.FC = () => {
                   <option value="weekly">هفتگی</option>
                 </select>
               </div>
-              <div className="h-64 md:h-80">
+              <div className="h-48 md:h-64 lg:h-80">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                  <AreaChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 0 }}>
                     <defs>
                       <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor="#10B981" stopOpacity={0.8}/>
@@ -383,7 +383,7 @@ const FinancialDashboard: React.FC = () => {
                       }}
                     />
                     <Legend 
-                      wrapperStyle={{ paddingTop: '10px', fontSize: 12 }}
+                      wrapperStyle={{ paddingTop: '5px', fontSize: 10 }}
                       formatter={(value) => <span className="text-gray-700">{value}</span>}
                     />
                     <Area 
@@ -393,8 +393,8 @@ const FinancialDashboard: React.FC = () => {
                       stroke="#10B981" 
                       fillOpacity={1} 
                       fill="url(#colorRevenue)" 
-                      strokeWidth={2}
-                      activeDot={{ r: 4 }}
+                      strokeWidth={1.5}
+                      activeDot={{ r: 3 }}
                     />
                     <Area 
                       type="monotone" 
@@ -403,28 +403,28 @@ const FinancialDashboard: React.FC = () => {
                       stroke="#EF4444" 
                       fillOpacity={1} 
                       fill="url(#colorExpenses)" 
-                      strokeWidth={2}
-                      activeDot={{ r: 4 }}
+                      strokeWidth={1.5}
+                      activeDot={{ r: 3 }}
                     />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
             </div>
 
-            <div className="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border-l-4 border-green-500">
-              <h3 className="text-lg md:text-xl font-semibold text-green-700 flex items-center mb-4">
-                <MdOutlineReceipt className="ml-2" size={18} />
+            <div className="bg-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-sm border-l-4 border-green-500">
+              <h3 className="text-base md:text-lg font-semibold text-green-700 flex items-center mb-3">
+                <MdOutlineReceipt className="ml-1" size={16} />
                 توزیع مالی
               </h3>
-              <div className="h-64 md:h-80">
+              <div className="h-48 md:h-64 lg:h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
                       data={pieData}
                       cx="50%"
                       cy="50%"
-                      outerRadius={60}
-                      innerRadius={30}
+                      outerRadius={50}
+                      innerRadius={25}
                       fill="#8884d8"
                       dataKey="value"
                       labelLine={false}
@@ -447,7 +447,7 @@ const FinancialDashboard: React.FC = () => {
                       layout="vertical"
                       verticalAlign="middle"
                       align="right"
-                      wrapperStyle={{ fontSize: 12 }}
+                      wrapperStyle={{ fontSize: 10 }}
                       formatter={(value) => <span className="text-gray-700">{value}</span>}
                     />
                   </PieChart>
@@ -456,77 +456,79 @@ const FinancialDashboard: React.FC = () => {
             </div>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-sm border-t-4 border-indigo-500 overflow-hidden">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-4 md:mb-6 gap-2">
-              <h3 className="text-lg md:text-xl font-semibold text-indigo-700 flex items-center">
-                <MdOutlineReceipt className="ml-2" size={18} />
+          <motion.div variants={itemVariants} className="bg-white p-3 md:p-6 rounded-lg md:rounded-xl shadow-sm border-t-4 border-indigo-500 overflow-hidden">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-3 md:mb-4 gap-1">
+              <h3 className="text-base md:text-lg font-semibold text-indigo-700 flex items-center">
+                <MdOutlineReceipt className="ml-1" size={16} />
                 آخرین سفارشات
               </h3>
-              <div className="text-xs md:text-sm text-gray-500">
+              <div className="text-xs text-gray-500">
                 نمایش {filteredOrders.length} از {orders.length} سفارش
               </div>
             </div>
             
             {loading ? (
-              <div className="flex justify-center items-center h-40">
-                <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-500"></div>
+              <div className="flex justify-center items-center h-32">
+                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-indigo-500"></div>
               </div>
             ) : filteredOrders.length === 0 ? (
-              <div className="text-center py-10 text-gray-500 text-sm md:text-base">
+              <div className="text-center py-8 text-gray-500 text-xs md:text-sm">
                 هیچ سفارشی یافت نشد
               </div>
             ) : (
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">شماره سفارش</th>
-                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مشتری</th>
-                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">محصولات</th>
-                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">تاریخ</th>
-                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مبلغ</th>
-                      <th className="px-3 py-2 md:px-6 md:py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">وضعیت</th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {filteredOrders.slice(0, 5).map((order) => (
-                      <tr key={order.order_id} className="hover:bg-gray-50 transition-colors">
-                        <td className="px-3 py-3 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-gray-900">{order.order_id}</td>
-                        <td className="px-3 py-3 md:px-6 md:py-4 whitespace-nowrap">
-                          <div className="text-xs md:text-sm font-medium">{order.customer.username}</div>
-                          <div className="text-gray-400 text-xs hidden md:block">{order.customer.email}</div>
-                        </td>
-                        <td className="px-3 py-3 md:px-6 md:py-4 hidden sm:table-cell">
-                          <div className="flex flex-col space-y-1">
-                            {order.items.slice(0, 2).map((item, idx) => (
-                              <div key={idx} className="text-xs md:text-sm text-gray-700">
-                                {item.product_name} ({item.quantity}x)
-                                <div className="text-xs text-gray-500">{formatCurrency(item.price)}</div>
-                              </div>
-                            ))}
-                            {order.items.length > 2 && (
-                              <div className="text-xs text-indigo-600">+ {order.items.length - 2} محصول دیگر</div>
-                            )}
-                          </div>
-                        </td>
-                        <td className="px-3 py-3 md:px-6 md:py-4 whitespace-nowrap text-xs md:text-sm text-gray-500">
-                          {formatDate(order.created_at)}
-                        </td>
-                        <td className="px-3 py-3 md:px-6 md:py-4 whitespace-nowrap">
-                          <div className="text-xs md:text-sm font-medium">{formatCurrency(order.total_price)}</div>
-                          {order.discount_percentage && (
-                            <div className="text-xs text-green-600 hidden md:block">
-                              {formatCurrency(order.original_price || order.total_price)} ({order.discount_percentage}% تخفیف)
-                            </div>
-                          )}
-                        </td>
-                        <td className="px-3 py-3 md:px-6 md:py-4 whitespace-nowrap">
-                          <StatusBadge status={order.status} />
-                        </td>
+                <div className="min-w-[600px]">
+                  <table className="w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">سفارش</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مشتری</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">محصولات</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">تاریخ</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">مبلغ</th>
+                        <th className="px-2 py-1 md:px-4 md:py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">وضعیت</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {filteredOrders.slice(0, 5).map((order) => (
+                        <tr key={order.order_id} className="hover:bg-gray-50 transition-colors">
+                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap text-xs font-medium text-gray-900">#{order.order_id}</td>
+                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap">
+                            <div className="text-xs font-medium">{order.customer.username}</div>
+                            <div className="text-gray-400 text-xxs hidden md:block">{order.customer.email}</div>
+                          </td>
+                          <td className="px-2 py-1 md:px-4 md:py-2 hidden sm:table-cell">
+                            <div className="flex flex-col space-y-0.5">
+                              {order.items.slice(0, 2).map((item, idx) => (
+                                <div key={idx} className="text-xs text-gray-700">
+                                  {item.product_name} ({item.quantity}x)
+                                  <div className="text-xxs text-gray-500">{formatCurrency(item.price)}</div>
+                                </div>
+                              ))}
+                              {order.items.length > 2 && (
+                                <div className="text-xxs text-indigo-600">+ {order.items.length - 2} محصول دیگر</div>
+                              )}
+                            </div>
+                          </td>
+                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap text-xs text-gray-500">
+                            {formatDate(order.created_at)}
+                          </td>
+                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap">
+                            <div className="text-xs font-medium">{formatCurrency(order.total_price)}</div>
+                            {order.discount_percentage && (
+                              <div className="text-xxs text-green-600 hidden md:block">
+                                {formatCurrency(order.original_price || order.total_price)} ({order.discount_percentage}% تخفیف)
+                              </div>
+                            )}
+                          </td>
+                          <td className="px-2 py-1 md:px-4 md:py-2 whitespace-nowrap">
+                            <StatusBadge status={order.status} />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
           </motion.div>
@@ -540,17 +542,17 @@ const StatusBadge: React.FC<{ status: string }> = ({ status }) => {
   const statusConfig = {
     completed: {
       color: "bg-green-100 text-green-800",
-      icon: <MdCheckCircleOutline className="ml-1" size={14} />,
+      icon: <MdCheckCircleOutline className="ml-0.5" size={12} />,
       label: "تکمیل شده"
     },
     pending: {
       color: "bg-yellow-100 text-yellow-800",
-      icon: <MdSync className="ml-1 animate-spin" size={14} />,
+      icon: <MdSync className="ml-0.5 animate-spin" size={12} />,
       label: "در انتظار"
     },
     cancelled: {
       color: "bg-red-100 text-red-800",
-      icon: <MdOutlineCancel className="ml-1" size={14} />,
+      icon: <MdOutlineCancel className="ml-0.5" size={12} />,
       label: "لغو شده"
     }
   };
@@ -558,7 +560,7 @@ const StatusBadge: React.FC<{ status: string }> = ({ status }) => {
   const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.pending;
 
   return (
-    <span className={`px-2 py-1 rounded-full text-xs flex items-center ${config.color}`}>
+    <span className={`px-1.5 py-0.5 rounded-full text-xxs md:text-xs flex items-center ${config.color}`}>
       {config.icon}
       <span className="hidden sm:inline">{config.label}</span>
     </span>
@@ -605,20 +607,20 @@ const SummaryCard = ({
 
   return (
     <motion.div 
-      whileHover={{ y: -5 }}
-      className={`${colorClasses[color as keyof typeof colorClasses].bg} p-4 rounded-xl shadow-sm border-t-4 ${colorClasses[color as keyof typeof colorClasses].border}`}
+      whileHover={{ y: -3 }}
+      className={`${colorClasses[color as keyof typeof colorClasses].bg} p-3 rounded-lg shadow-sm border-t-4 ${colorClasses[color as keyof typeof colorClasses].border}`}
     >
       <div className="flex justify-between items-start">
         <div>
-          <h4 className={`${colorClasses[color as keyof typeof colorClasses].text} font-medium text-xs md:text-sm`}>{title}</h4>
+          <h4 className={`${colorClasses[color as keyof typeof colorClasses].text} font-medium text-xs`}>{title}</h4>
           {loading ? (
-            <div className="h-6 md:h-8 bg-gray-200 rounded mt-1 md:mt-2 w-3/4 animate-pulse"></div>
+            <div className="h-5 md:h-6 bg-gray-200 rounded mt-1 w-3/4 animate-pulse"></div>
           ) : (
-            <p className="text-lg md:text-2xl font-bold text-gray-900 mt-1 md:mt-1">{formattedValue}</p>
+            <p className="text-sm md:text-lg font-bold text-gray-900 mt-1">{formattedValue}</p>
           )}
-          <p className="text-xs text-gray-500 mt-1 md:mt-2">{change}</p>
+          <p className="text-xxs md:text-xs text-gray-500 mt-0.5">{change}</p>
         </div>
-        <div className={`${colorClasses[color as keyof typeof colorClasses].iconBg} p-2 md:p-3 rounded-lg`}>{icon}</div>
+        <div className={`${colorClasses[color as keyof typeof colorClasses].iconBg} p-1.5 md:p-2 rounded-md`}>{icon}</div>
       </div>
     </motion.div>
   );
